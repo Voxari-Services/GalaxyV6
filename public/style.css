@@ -1,0 +1,130 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-image: url("assets/img/bg3.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: rgb(187, 182, 182);
+}
+@font-face {
+  font-family: fabrica;
+  src: url(../assets/fonts/fabrica-font/Fabrica-ZOjx.otf) format("woff2");
+}
+@font-face {
+  font-family: gravity;
+  src: url(../assets/fonts/gravity-font/GravityLight-66Ro.otf) format("woff2");
+}
+@font-face {
+  font-family: nunito;
+  src: url(../assets/fonts/nunito-font/NunitoExtralight-YzEeq.ttf);
+}
+@font-face {
+  font-family: royalCrescent;
+  src: url(../assets/fonts/royal-crescent-font/RoyalCrescent-G8BP.ttf);
+}
+
+/*--------------------------------*/
+/*--------------------------------*/
+/*--------------------------------*/
+/* WELCOME MESSAGE STYLES */
+/*--------------------------------*/
+/*--------------------------------*/
+/*--------------------------------*/
+
+.welcomeMsgDiv {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
+.welcomeMsg,
+.galaxy {
+  display: inline-block;
+  font-family: nunito;
+  font-size: 100px;
+}
+.welcomeMsgDiv {
+    -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
+
+}
+.galaxy {
+  background-image: linear-gradient(40deg, #334d69, #7ba6d6, #8b8d84);
+  -webkit-background-clip: text;
+  background-clicp: transparent;
+  color: transparent;
+
+  letter-spacing: 30px;
+}
+
+.h1seven {
+  margin-left: 20px;
+}
+.WelcomeMsgversion {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  background-image: linear-gradient(45deg, #0d1b2a, #415a77, #e0e1dd);
+  -webkit-background-clip: text;
+  background-clicp: transparent;
+  color: transparent;
+  letter-spacing: 0px;
+}
+
+.cta {
+  font-family: gravity;
+  opacity: 0;
+}
+
+/*---------------------------------*/
+/*---------------------------------*/
+/*---------------------------------*/
+/* WELCOME MESSAGE STYLES */
+/*---------------------------------*/
+/*---------------------------------*/
+/*---------------------------------*/
+.onboarding {
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.questionCard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+}
+.question {
+  font-family: fabrica;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.qInput {
+  font-family: fabrica;
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  outline: none;
+  background: none;
+  width: 20rem;
+  padding: 15px 0px 15px 10px;
+  transition-duration: 0.4s;
+  border: 0px;
+  border-bottom: 1px solid rgb(126, 123, 123);
+}
+.qInput:focus {
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+.enterName {
+  opacity: 0;
+}
