@@ -128,17 +128,20 @@ gsap.fromTo(
   }
 );
 function sweepUp() {
+  const message = document.getElementById("welcomeMsgDiv");
   gsap.to(".h1one", {
     y: "-300",
     duration: 2,
     ease: "expo.inOut",
     opacity: 0,
     onComplete: function () {
-      const message = document.getElementById("welcomeMsgDiv");
-      message.style.display = "none";
-      const name = document.getElementById("enterName");
-      name.style.display = "flex";
-      startOnboarding();
+      message.style.animation = "unblurdiv 0.6s ease forwards";
+      message.addEventListener("animationend", () => {
+        message.style.display = "none";
+        const name = document.getElementById("enterName");
+        name.style.display = "flex";
+        startOnboarding();
+      });
     },
   });
   gsap.to(".h1two", {
@@ -268,14 +271,11 @@ function finish() {
     ".stagger3",
     {
       opacity: 0,
-      y: 50,
     },
     {
-      y: 0,
       opacity: 1,
-      duration: 0.4,
+      duration: 0.5,
       ease: "power1.out",
-      stagger: 0.1,
     }
   );
 }
@@ -289,7 +289,7 @@ function ghost2() {
     {
       y: -50,
       opacity: 0,
-      duration: 0.8,
+      duration: 0.4,
       ease: "power1.out",
       stagger: 0.1,
       onComplete: function () {
@@ -325,29 +325,29 @@ let img = document.querySelectorAll(".bgselect");
 
 img.forEach((el) => {
   el.addEventListener("mouseenter", () => {
-    img.forEach((e) => (e.style.opacity = "0.4"));
+    img.forEach((e) => (e.style.opacity = "40%"));
   });
 
   el.addEventListener("mouseleave", () => {
-    img.forEach((e) => (e.style.opacity = "1"));
+    img.forEach((e) => (e.style.opacity = "100%"));
   });
 });
 const uploadDiv = document.getElementById("uplaoddiv");
 const fileInput = document.getElementById("fileInput");
-let file
+let file;
 uploadDiv.addEventListener("click", () => {
   fileInput.click();
-  file = ""
+  file = "";
 });
 fileInput.addEventListener("change", () => {
- file = fileInput.files[0];
+  file = fileInput.files[0];
 
   if (file && file.type.startsWith("image/")) {
     const reader = new FileReader();
     reader.onload = () => {
       const uploadedimg = reader.result;
-      localStorage.setItem("backgroundURL", uploadedimg)
-      backgroundURL = uploadedimg
+      localStorage.setItem("backgroundURL", uploadedimg);
+      backgroundURL = uploadedimg;
       document.documentElement.style.setProperty(
         "--backgroundURL",
         `url(${backgroundURL})`
