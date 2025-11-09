@@ -10,6 +10,7 @@ body {
   background-repeat: no-repeat;
   color: rgb(187, 182, 182);
   transition-duration: 0.4s;
+  margin: 0px;
 }
 @font-face {
   font-family: fabrica;
@@ -45,6 +46,13 @@ body {
   align-items: center;
   flex-direction: column;
   z-index: 1;
+  backdrop-filter: blur(20px);
+  transition: filter 1s;
+}
+@keyframes unblurdiv {
+  to {
+    backdrop-filter: blur(0px);
+  }
 }
 .welcomeMsg,
 .galaxy {
@@ -134,7 +142,8 @@ body {
 }
 
 .enterName,
-.finish {
+.finish,
+.chooseBg {
   display: none;
   opacity: 0;
 }
@@ -152,8 +161,7 @@ body {
   cursor: pointer;
 }
 .bgselect {
-    transition: opacity 0.3s ease;
-
+  transition: opacity 0.3s ease;
 }
 .upload {
   border: 0px;
@@ -200,3 +208,30 @@ body {
 /*--------------------------------*/
 /*--------------------------------*/
 /*--------------------------------*/
+.nav {
+  height: 50px;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.438);
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.navItems {
+  height: 35px;
+  width: 35px;
+  border-radius: 7px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.icons {
+  height: 35px;
+  width: auto;
+  color: white;
+}
