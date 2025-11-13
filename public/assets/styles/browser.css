@@ -78,12 +78,12 @@ body {
 }
 @keyframes openTab {
   to {
-    width: 163px;
+    width: 170px;
   }
 }
 @keyframes closeTab {
   from {
-    width: 163px;
+    width: 170px;
   }
   to {
     width: 0px;
@@ -95,17 +95,17 @@ body {
 }
 
 .favicon {
-  height: 25px;
+  height: 12px;
   width: auto;
 }
 .tabName {
-  font-size: 16px;
+  font-size: 12px;
   font-family: fabrica;
   font-weight: 1000;
-  white-space: nowrap; /* Keep text on one line */
-  overflow: hidden; /* Hide anything that doesn’t fit */
-  text-overflow: ellipsis; /* Show "..." at the end */
-  max-width: 100px; /* Set a maximum width for the tab name */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
 }
 .close {
   margin-left: auto;
@@ -159,7 +159,6 @@ body {
   justify-content: center;
 }
 .search {
-  z-index: 1;
   background: #ffffff00;
   border: 1px solid #ffffff1e;
   color: #fff;
@@ -185,4 +184,94 @@ body {
 }
 .toolbarBtn {
   cursor: pointer;
+}
+/* Dropdown menu */
+.menu {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 0 10px #000;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: scaleY(0.8);
+  transform-origin: top;
+  transition: all 0.3s ease;
+}
+.menu.show {
+  max-height: 300px;
+  opacity: 1;
+  transform: scaleY(1);
+}
+.menuItem {
+  position: relative;
+  color: #ccc;
+  font-family: fabrica;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.menuItem:hover {
+  background-color: #444;
+}
+.submenu {
+  top: 0;
+  left: 100%;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 200;
+  box-shadow: 0 0 8px #000;
+}
+.submenu.show {
+  display: flex;
+}
+.submenuItem {
+  color: #ccc;
+  font-family: fabrica;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.submenuItem:hover {
+  background-color: #444;
+} /* Overlay to catch clicks */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50; /* below menu but above iframe */
+  display: none;
+  background-color: transparent;
+  cursor: default;
+}
+#overlay.show {
+  display: block;
+}
+#overlay,
+.menuItem,
+.menu,
+.menu.show,
+#plusdiv,
+.frame {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
 }
