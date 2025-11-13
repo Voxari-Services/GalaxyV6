@@ -261,6 +261,19 @@ function part2() {
       duration: 0.8,
       ease: "power1.out",
       stagger: 0.1,
+      onComplete: function () {
+        let img = document.querySelectorAll(".bgselect");
+
+        img.forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            img.forEach((e) => (e.style.opacity = "40%"));
+          });
+
+          el.addEventListener("mouseleave", () => {
+            img.forEach((e) => (e.style.opacity = "100%"));
+          });
+        });
+      },
     }
   );
 }
@@ -303,7 +316,7 @@ function ghost2() {
 
 let backgroundURL = localStorage.getItem("backgroundURL");
 if (backgroundURL == null) {
-  localStorage.setItem("backgroundURL", "assets/img/bg3.png");
+  localStorage.setItem("backgroundURL", "../img/bg3.png");
 } else {
 }
 backgroundURL = localStorage.getItem("backgroundURL");
@@ -321,17 +334,6 @@ function setBackground(bg) {
     `url(${backgroundURL})`
   );
 }
-let img = document.querySelectorAll(".bgselect");
-
-img.forEach((el) => {
-  el.addEventListener("mouseenter", () => {
-    img.forEach((e) => (e.style.opacity = "40%"));
-  });
-
-  el.addEventListener("mouseleave", () => {
-    img.forEach((e) => (e.style.opacity = "100%"));
-  });
-});
 const uploadDiv = document.getElementById("uplaoddiv");
 const fileInput = document.getElementById("fileInput");
 let file;
