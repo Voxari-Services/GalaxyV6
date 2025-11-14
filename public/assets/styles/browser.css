@@ -327,7 +327,7 @@ body {
   color: black;
   font-family: fabrica;
   padding: 5px 10px;
-  cursor: default;
+  cursor: pointer;
   animation: name duration timing-function delay iteration-count direction fill-mode;
   border-radius: 2px;
   font-size: 13px;

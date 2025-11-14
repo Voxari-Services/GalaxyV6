@@ -1,3 +1,5 @@
+import { makeURL, proxySJ, proxyUV } from "../../lithium.mjs";
+import { openurl, loadingShow, loadingHide } from "/assets/js/openapps.js";
 const back = document.getElementById("goBack");
 const forward = document.getElementById("goForward");
 const reload = document.getElementById("reload");
@@ -13,15 +15,18 @@ const shortcut = document.getElementById("AddShortcut");
 const iframe = document.getElementById(
   "frame" + activeTabId.replace("tab", "")
 );
+let currentTab = document.getElementById("tab" + tabNumber);
+let tabName = currentTab?.querySelector(".tabName");
+
 let PchangeNotice = document.createElement("div");
 function pchangeShow(proxyType) {
   PchangeNotice.className = "notice";
   PchangeNotice.textContent = "Set to " + proxyType;
   document.body.appendChild(PchangeNotice);
   PchangeNotice.style.animation = "noticeShow 0.4s forwards";
-  PchangeNotice.addEventListener("animationend", function() {
-      PchangeNotice.style.animation = "noticeHide 0.4s ease 1s forwards";
-  })
+  PchangeNotice.addEventListener("animationend", function () {
+    PchangeNotice.style.animation = "noticeHide 0.4s ease 1s forwards";
+  });
 }
 reload.addEventListener("click", () => {
   iframe.contentWindow.location.reload();
@@ -52,7 +57,7 @@ setUV.addEventListener("click", () => {
   proxyMenu.classList.remove("show");
   moreMenu.classList.remove("show");
   overlay.classList.remove("show");
-  pchangeShow('UV');
+  pchangeShow("UV");
 });
 
 setSJ.addEventListener("click", () => {
@@ -61,8 +66,7 @@ setSJ.addEventListener("click", () => {
   proxyMenu.classList.remove("show");
   moreMenu.classList.remove("show");
   overlay.classList.remove("show");
-  pchangeShow('SJ');
-
+  pchangeShow("SJ");
 });
 
 overlay.addEventListener("click", () => {
@@ -74,12 +78,12 @@ let shortcutNumber = localStorage.getItem("shortcutNumber") || 0;
 
 function AddShortcut() {
   shortcutNumber++;
-  let shortcuturl = prompt("Enter Shortcut URL", input.value);
+  let shortcuturl = prompt("Enter Shortcut URL", "https://example.com");
   if (!shortcuturl) return;
 
   localStorage.setItem("shortcutURL" + shortcutNumber, shortcuturl);
 
-  let shortcutname = prompt("Enter Shortcut Name", iframe.contentDocument?.title || "Untitled");
+  let shortcutname = prompt("Enter Shortcut Name", "Example");
   if (!shortcutname) shortcutname = shortcuturl;
 
   localStorage.setItem("shortcutname" + shortcutNumber, shortcutname);
@@ -92,6 +96,7 @@ function AddShortcut() {
   bookmark.id = "bookmarklets" + shortcutNumber;
   bookmark.textContent = shortcutname;
 
+  // Left-click action
   bookmark.onclick = () => {
     input.value = shortcuturl;
     input.dispatchEvent(
@@ -99,12 +104,16 @@ function AddShortcut() {
     );
   };
 
+  // Right-click action for deletion
   bookmark.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default context menu
     const confirmDelete = confirm(`Remove bookmark "${shortcutname}"?`);
     if (confirmDelete) {
+      // Remove from localStorage
       localStorage.removeItem("shortcutURL" + shortcutNumber);
       localStorage.removeItem("shortcutname" + shortcutNumber);
+      
+      // Remove from DOM
       bookmark.remove();
     }
   });
@@ -125,12 +134,16 @@ window.onload = () => {
     bookmark.className = "bookmarklets";
     bookmark.id = "bookmarklets" + i;
     bookmark.textContent = name;
+
+    // Left-click
     bookmark.onclick = () => {
       input.value = url;
       input.dispatchEvent(
         new KeyboardEvent("keyup", { key: "Enter", keyCode: 13, bubbles: true })
       );
     };
+
+    // Right-click deletion
     bookmark.addEventListener("contextmenu", (e) => {
       e.preventDefault();
       const confirmDelete = confirm(`Remove bookmark "${name}"?`);
@@ -144,3 +157,5 @@ window.onload = () => {
     bookmarks.appendChild(bookmark);
   }
 };
+
+window.AddShortcut = AddShortcut;
