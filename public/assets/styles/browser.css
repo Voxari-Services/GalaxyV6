@@ -322,13 +322,13 @@ body {
 .bookmarks {
   height: 40px;
   width: 100%;
-  border-bottom: 2px solid #000000;
+  border-bottom: 2px solid #3f3f3f;
   display: flex;
   align-items: center;
   flex-direction: row;
   gap: 10px;
   padding: 5px 10px;
-  background-color: #b6b6b611;
+  background-color: #2b2b2ba4;
 }
 .bookmarklets {
   align-items: center;
@@ -375,4 +375,21 @@ body {
   to {
     right: -120px;
   }
+}
+.windowControls {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  height: 100%; 
+}
+.windowIcons {
+  height: 15px;
+
+}
+#squares {
+  display: none;
 }
