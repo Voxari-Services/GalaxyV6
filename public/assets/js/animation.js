@@ -360,5 +360,6 @@ fileInput.addEventListener("change", () => {
 });
 
 function ghost3() {
-  window.location.href = "main/";
+  localStorage.setItem("onboarding", "");
+  window.location.href = "../";
 }
