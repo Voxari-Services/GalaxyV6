@@ -1,19 +1,20 @@
 :root {
-  --backgroundURL: url("../img/black.jpg");
+  /* --backgroundURL: url("../img/black.jpg"); */
 }
 body {
-  background-image: var(--backgroundURL);
+  /* background-image: var(--backgroundURL); */
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  background-size: cover;
-  background-repeat: no-repeat;
   color: rgb(187, 182, 182);
   transition-duration: 0.4s;
   margin: 0px;
   display: flex;
   flex-direction: column;
-  background-color: #000000;
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 @font-face {
   font-family: fabrica;
@@ -39,9 +40,12 @@ body {
   font-family: aovel;
   src: url(../fonts/aovel-sans/AovelSansRounded-rdDL.ttf);
 }
+* {
+    -webkit-font-smoothing: antialiased;
 
+}
 #nav {
-  background-color: rgba(0, 0, 0, 0.39);
+  background-color: rgb(0, 0, 0);
   top: 0;
   height: 50px;
   width: 100%;
@@ -184,7 +188,6 @@ body {
   height: 33px;
   transition-duration: 0.2s;
   flex-grow: 1;
-  
 }
 
 .search-container:hover {
@@ -192,7 +195,7 @@ body {
 }
 
 .search-container i {
-  margin-right: 8px; 
+  margin-right: 8px;
 }
 .search {
   background: transparent;
@@ -243,7 +246,6 @@ body {
   transform-origin: top;
   transition: all 0.3s ease;
   z-index: -1;
-  
 }
 .menu.show {
   z-index: 100;

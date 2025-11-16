@@ -1,6 +1,7 @@
 :root {
   --backgroundURL: url("../img/black.jpg");
 }
+
 body {
   background-image: var(--backgroundURL);
   background-color: #000000;
@@ -12,6 +13,10 @@ body {
   color: rgb(187, 182, 182);
   transition-duration: 0.4s;
   margin: 0px;
+}
+* {
+    -webkit-font-smoothing: antialiased;
+
 }
 @font-face {
   font-family: fabrica;
@@ -61,7 +66,9 @@ body {
   font-family: nunito;
   font-size: 100px;
 }
-.welcomeMsgDiv {
+.welcomeMsgDiv,
+.window,
+.nav {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -216,7 +223,10 @@ body {
   margin: 0;
   position: absolute;
   bottom: 0;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -242,23 +252,33 @@ body {
   flex-direction: column;
   height: 500px;
   width: 900px;
-    cursor: move;
+  cursor: move;
+}
+.windowTop {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 20px;
+}
+.windowMove {
+  border-top-left-radius: 10px;
+
+  flex-grow: 1;
+  background-color: #2e2e2e;
 }
 .windowControls {
   display: flex;
-  flex-direction: row-reverse;
   margin-left: auto;
   align-items: center;
   text-align: center;
-  width: 100%;
   background-color: #2e2e2e;
+  border-top-right-radius: 10px;
 }
 
 .windowcontrolicon {
   cursor: default;
-
-  height: 20px;
   width: 35px;
+  height: 20px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -281,4 +301,45 @@ body {
   height: 100%;
   width: 100%;
   border: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+@keyframes closeWindow {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}#minimizedContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 5px;
+  z-index: 9999;
+}
+
+.minimizedWindowIcon {
+  width: 50px;
+  height: 30px;
+  background: #222;
+  border: 1px solid #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.minimizedPreview {
+  position: absolute;
+  width: 300px;       
+  height: 200px;     
+  border: 2px solid #555;
+  background: #000;
+  overflow: hidden;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
