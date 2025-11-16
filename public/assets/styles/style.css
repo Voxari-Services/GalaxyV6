@@ -15,8 +15,7 @@ body {
   margin: 0px;
 }
 * {
-    -webkit-font-smoothing: antialiased;
-
+  -webkit-font-smoothing: antialiased;
 }
 @font-face {
   font-family: fabrica;
@@ -252,13 +251,13 @@ body {
   flex-direction: column;
   height: 500px;
   width: 900px;
-  cursor: move;
 }
 .windowTop {
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 20px;
+  cursor: move;
 }
 .windowMove {
   border-top-left-radius: 10px;
@@ -307,9 +306,10 @@ body {
 @keyframes closeWindow {
   to {
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(0.8);
   }
-}#minimizedContainer {
+}
+#minimizedContainer {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -333,8 +333,8 @@ body {
 }
 .minimizedPreview {
   position: absolute;
-  width: 300px;       
-  height: 200px;     
+  width: 300px;
+  height: 200px;
   border: 2px solid #555;
   background: #000;
   overflow: hidden;
@@ -342,4 +342,14 @@ body {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease;
+}
+.resize-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
+  background: transparent;
+  
 }
