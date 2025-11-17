@@ -30,8 +30,8 @@ function openWindow(windowSrc) {
 
   windowEl.className = "window";
   windowEl.style.position = "absolute";
-  windowEl.style.left = "500px";
-  windowEl.style.top = "100px";
+  windowEl.style.left = "25%";
+  windowEl.style.top = "25%";
   windowEl.style.zIndex = ++zindex;
 
   windowEl.innerHTML = `
@@ -64,7 +64,7 @@ function openWindow(windowSrc) {
   iframe.className = "windowFrame";
   iframe.src = windowSrc;
   iframe.style.width = "100%";
-  iframe.style.height = "calc(100% - 30px)";
+  iframe.style.height = "100%)";
   iframe.style.border = "none";
   windowEl.appendChild(iframe);
 
@@ -146,8 +146,8 @@ function openWindow(windowSrc) {
       windowValue = "0";
       windowEl.style.left = "0px";
       windowEl.style.top = "0px";
-      windowEl.style.width = "105%";
-      windowEl.style.height = "105%";
+      windowEl.style.width = "100%";
+      windowEl.style.height = "100%";
     } else {
       squares.style.display = "none";
       square.style.display = "flex";

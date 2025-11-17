@@ -249,8 +249,8 @@ body {
   display: flex;
   position: absolute;
   flex-direction: column;
-  height: 500px;
-  width: 900px;
+  height: 50%;
+  width: 50%;
 }
 .windowTop {
   display: flex;
