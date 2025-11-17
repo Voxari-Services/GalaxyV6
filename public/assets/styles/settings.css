@@ -157,6 +157,10 @@ button:hover {
   border-radius: 12px;
   cursor: pointer;
   transition: 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 .menuItem:hover {
