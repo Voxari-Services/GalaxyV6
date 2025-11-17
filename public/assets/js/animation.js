@@ -147,13 +147,13 @@ function sweepUp() {
   gsap.to(".h1two", {
     y: "-600",
     delay: 0.5,
-    duration: 2,
+    duration: 1.3,
     ease: "expo.inOut",
     opacity: 0,
   });
   gsap.to(".h1three", {
     y: "-100",
-    duration: 2,
+    duration: 1.3,
     delay: 0.2,
     ease: "expo.inOut",
     opacity: 0,
@@ -161,7 +161,7 @@ function sweepUp() {
   gsap.to(".h1four", {
     y: "-800",
     delay: 0.7,
-    duration: 2,
+    duration: 1.3,
     ease: "expo.inOut",
     opacity: 0,
   });
@@ -169,27 +169,27 @@ function sweepUp() {
     delay: 0.8,
 
     y: "-400",
-    duration: 2,
+    duration: 1.3,
     ease: "expo.inOut",
     opacity: 0,
   });
   gsap.to(".h1six", {
     delay: 0.3,
     y: "-200",
-    duration: 2,
+    duration: 1.3,
     ease: "expo.inOut",
     opacity: 0,
   });
   gsap.to(".h1seven", {
     delay: 0.7,
     y: "-500",
-    duration: 2,
+    duration: 1.3,
     ease: "expo.inOut",
     opacity: 0,
   });
   gsap.to(".h1eight", {
     y: "-300",
-    duration: 2,
+    duration: 1.3,
     ease: "expo.inOut",
     opacity: 0,
   });
