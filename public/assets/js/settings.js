@@ -1,4 +1,4 @@
-const currentSiteUrl = window.location.href + "?redirect=true";
+const currentSiteUrl = window.location.origin + "?redirect=true";
 function launchBlob() {
   const htmlContent = `
     <html>
@@ -53,7 +53,7 @@ function aboutBlank() {
             <title>Classroom</title>
         </head>
         <body>
-          <iframe src="${currentSiteUrl}"></iframe>
+          <iframe src="/"></iframe>
         </body>
         <style>
     body,iframe {
