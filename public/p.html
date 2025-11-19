@@ -26,9 +26,7 @@
       <div id="plusdiv" onclick="newTab()">
         <p class="plus">+</p>
       </div>
-</div>
     </div>
-
     <div class="toolbar">
       <div class="goBack toolbarBtn" id="goBack">
         <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
@@ -56,6 +54,28 @@
           <div id="AddShortcut" class="menuItem" onclick="AddShortcut()">
             Add Bookmark
           </div>
+          <div id="changeEngine" class="menuItem">Change Search Engine</div>
+          <div id="engineMenu" class="submenu">
+            <div
+              class="submenuItem"
+              onclick="setSearchEngine('https://google.com/search?q=%s')"
+            >
+              Google
+            </div>
+            <div
+              class="submenuItem"
+              onclick="setSearchEngine('https://search.brave.com/search?q=%s')"
+            >
+              Brave
+            </div>
+            <div
+              class="submenuItem"
+              onclick="setSearchEngine('https://duckduckgo.com/search?q=%s')"
+            >
+              DuckDuckGo
+            </div>
+          </div>
+
           <div id="bugReport" class="menuItem" onclick="">Bug Report</div>
         </div>
         <div id="overlay" class=""></div>

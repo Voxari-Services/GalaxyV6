@@ -10,11 +10,11 @@ const changeProxy = document.getElementById("changeProxy");
 const proxyMenu = document.getElementById("proxyMenu");
 const setUV = document.getElementById("setUV");
 const setSJ = document.getElementById("setSJ");
+const changeEngine = document.getElementById("changeEngine");
+const engineMenu = document.getElementById("engineMenu");
 const setAuto = document.getElementById("setAuto");
 const shortcut = document.getElementById("AddShortcut");
-let iframe = document.getElementById(
-  "frame" + activeTabId.replace("tab", "")
-);
+let iframe = document.getElementById("frame" + activeTabId.replace("tab", ""));
 let PchangeNotice = document.createElement("div");
 function pchangeShow(proxyType) {
   PchangeNotice.className = "notice";
@@ -28,7 +28,7 @@ function pchangeShow(proxyType) {
 function reloadX() {
   reload.addEventListener("click", () => {
     iframe = document.getElementById("frame" + activeTabId.replace("tab", ""));
-    iframe.src=iframe.src;
+    iframe.src = iframe.src;
   });
 }
 forward.addEventListener("click", () => {
@@ -50,6 +50,10 @@ moreBtn.addEventListener("click", (e) => {
 
 changeProxy.addEventListener("click", (e) => {
   proxyMenu.classList.toggle("show");
+  e.stopPropagation();
+});
+changeEngine.addEventListener("click", (e) => {
+  engineMenu.classList.toggle("show");
   e.stopPropagation();
 });
 
@@ -159,6 +163,9 @@ window.onload = () => {
     bookmarks.appendChild(bookmark);
   }
 };
-
+function setSearchEngine(z) {
+  localStorage.setItem("searchEngine", z);
+}
 window.AddShortcut = AddShortcut;
 window.reloadX = reloadX;
+window.setSearchEngine = setSearchEngine;

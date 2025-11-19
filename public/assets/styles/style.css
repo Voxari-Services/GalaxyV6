@@ -231,6 +231,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 15px;
+  z-index: 1000;
 }
 .navItems {
   height: 35px;
@@ -337,18 +338,38 @@ body {
   border: 2px solid #555;
   background: #000;
   overflow: hidden;
-  z-index: 10000;
+  z-index: 1;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 .resize-handle {
+  width: 14px;
+  height: 14px;
   position: absolute;
-  width: 20px;
-  height: 20px;
-  right: 0;
-  bottom: 0;
-  cursor: se-resize;
-  background: transparent;
-  
+  z-index: 10;
+}
+
+.resize-top-left {
+  top: -3px;
+  left: -3px;
+  cursor: nwse-resize;
+}
+
+.resize-top-right {
+  top: -3px;
+  right: -3px;
+  cursor: nesw-resize;
+}
+
+.resize-bottom-left {
+  bottom: -3px;
+  left: -3px;
+  cursor: nesw-resize;
+}
+
+.resize-bottom-right {
+  bottom: -3px;
+  right: -3px;
+  cursor: nwse-resize;
 }
