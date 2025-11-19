@@ -50,9 +50,15 @@ function openWindow(windowSrc) {
         </div>
       </div>
     </div>
-    <div class="resize-handle"></div>
+
+    <!-- NEW: 4 corner resize handles -->
+    <div class="resize-handle resize-top-left"></div>
+    <div class="resize-handle resize-top-right"></div>
+    <div class="resize-handle resize-bottom-left"></div>
+    <div class="resize-handle resize-bottom-right"></div>
   `;
 
+  // control buttons
   const squareBtn = windowEl.querySelector(".square");
   const closeBtn = windowEl.querySelector(".closeIcon");
   const minimizeBtn = windowEl.querySelector(".minimize");
@@ -61,69 +67,103 @@ function openWindow(windowSrc) {
   closeBtn.addEventListener("click", closeWindow);
   minimizeBtn.addEventListener("click", minimizeWindow);
 
+  // iframe
   iframe.className = "windowFrame";
   iframe.src = windowSrc;
   iframe.style.width = "100%";
-  iframe.style.height = "100%)";
+  iframe.style.height = "100%";
   iframe.style.border = "none";
-  windowEl.appendChild(iframe);
 
+  windowEl.appendChild(iframe);
   document.body.appendChild(windowEl);
 
   const controls = windowEl.querySelector(".windowMove");
-  const resizeHandle = windowEl.querySelector(".resize-handle");
+  const handles = windowEl.querySelectorAll(".resize-handle");
 
   let isDragging = false;
   let isResizing = false;
+  let currentHandle = null;
   let offset = { x: 0, y: 0 };
   const allIframes = document.querySelectorAll(".windowFrame");
 
+  // -------------- DRAGGING -----------------
   controls.addEventListener("mousedown", (e) => {
     windowEl.style.transition = "0s";
-    if (windowValue === "1") {
-      allIframes.forEach((f) => (f.style.pointerEvents = "none"));
-      isDragging = true;
-      offset.x = e.clientX - windowEl.offsetLeft;
-      offset.y = e.clientY - windowEl.offsetTop;
-    } else {
-      changeIcon();
-      allIframes.forEach((f) => (f.style.pointerEvents = "none"));
-
-      windowEl.style.transition = "0s";
-      windowEl.style.top = "0px";
-      isDragging = true;
-      offset.x = e.clientX - windowEl.offsetLeft;
-      offset.y = e.clientY - windowEl.offsetTop;
-    }
+    allIframes.forEach((f) => (f.style.pointerEvents = "none"));
+    isDragging = true;
+    offset.x = e.clientX - windowEl.offsetLeft;
+    offset.y = e.clientY - windowEl.offsetTop;
   });
 
   windowEl.addEventListener("mousedown", () => {
     windowEl.style.zIndex = ++zindex;
   });
 
-  resizeHandle.addEventListener("mousedown", (e) => {
-    e.stopPropagation();
-    isResizing = true;
-    offset.x = e.clientX;
-    offset.y = e.clientY;
-    allIframes.forEach((f) => (f.style.pointerEvents = "none"));
-    windowEl.style.transition = "0s";
+  // -------------- RESIZING (4 corners) -----------------
+  handles.forEach((handle) => {
+    handle.addEventListener("mousedown", (e) => {
+      e.stopPropagation();
+      isResizing = true;
+      currentHandle = handle;
+      offset.x = e.clientX;
+      offset.y = e.clientY;
+      allIframes.forEach((f) => (f.style.pointerEvents = "none"));
+      windowEl.style.transition = "0s";
+    });
   });
 
   document.addEventListener("mousemove", (e) => {
     if (isDragging) {
       let newX = e.clientX - offset.x;
       let newY = e.clientY - offset.y;
+
       const maxX = window.innerWidth - windowEl.offsetWidth;
       const maxY = window.innerHeight - windowEl.offsetHeight;
+
       windowEl.style.left = Math.max(0, Math.min(newX, maxX)) + "px";
       windowEl.style.top = Math.max(0, Math.min(newY, maxY)) + "px";
     }
+
     if (isResizing) {
-      const w = Math.max(200, e.clientX - windowEl.offsetLeft);
-      const h = Math.max(150, e.clientY - windowEl.offsetTop);
-      windowEl.style.width = w + "px";
-      windowEl.style.height = h + "px";
+      const dx = e.clientX - offset.x;
+      const dy = e.clientY - offset.y;
+
+      let newWidth = windowEl.offsetWidth;
+      let newHeight = windowEl.offsetHeight;
+      let newLeft = windowEl.offsetLeft;
+      let newTop = windowEl.offsetTop;
+
+      if (currentHandle.classList.contains("resize-bottom-right")) {
+        newWidth += dx;
+        newHeight += dy;
+      }
+      if (currentHandle.classList.contains("resize-bottom-left")) {
+        newWidth -= dx;
+        newLeft += dx;
+        newHeight += dy;
+      }
+      if (currentHandle.classList.contains("resize-top-right")) {
+        newWidth += dx;
+        newHeight -= dy;
+        newTop += dy;
+      }
+      if (currentHandle.classList.contains("resize-top-left")) {
+        newWidth -= dx;
+        newLeft += dx;
+        newHeight -= dy;
+        newTop += dy;
+      }
+
+      newWidth = Math.max(200, newWidth);
+      newHeight = Math.max(150, newHeight);
+
+      windowEl.style.width = newWidth + "px";
+      windowEl.style.height = newHeight + "px";
+      windowEl.style.left = newLeft + "px";
+      windowEl.style.top = newTop + "px";
+
+      offset.x = e.clientX;
+      offset.y = e.clientY;
     }
   });
 
@@ -133,6 +173,7 @@ function openWindow(windowSrc) {
     allIframes.forEach((f) => (f.style.pointerEvents = "auto"));
   });
 
+  // -------------- MAXIMIZE / RESTORE -----------------
   let square = windowEl.querySelector("#square");
   let squares = windowEl.querySelector("#squares");
 
@@ -144,14 +185,16 @@ function openWindow(windowSrc) {
       square.style.display = "none";
       squares.style.display = "flex";
       windowValue = "0";
+
       windowEl.style.left = "0px";
       windowEl.style.top = "0px";
       windowEl.style.width = "100%";
-      windowEl.style.height = "100%";
+      windowEl.style.height = "calc(100% - 40px)";
     } else {
       squares.style.display = "none";
       square.style.display = "flex";
       windowValue = "1";
+
       windowEl.style.left = "500px";
       windowEl.style.top = "200px";
       windowEl.style.width = "900px";
@@ -159,6 +202,7 @@ function openWindow(windowSrc) {
     }
   }
 
+  // -------------- CLOSE -----------------
   function closeWindow() {
     windowEl.style.animation = "closeWindow 0.2s ease forwards";
     windowEl.addEventListener("animationend", () => {
@@ -166,6 +210,7 @@ function openWindow(windowSrc) {
     });
   }
 
+  // -------------- MINIMIZE -----------------
   function minimizeWindow() {
     const minimizedContainer = document.getElementById("minimizedContainer");
     const icon = document.createElement("div");
@@ -173,6 +218,7 @@ function openWindow(windowSrc) {
     minimizedContainer.appendChild(icon);
 
     const rect = icon.getBoundingClientRect();
+
     windowEl.style.transition = "all 0.3s ease";
     windowEl.style.width = rect.width + "px";
     windowEl.style.height = rect.height + "px";
@@ -207,15 +253,24 @@ function openWindow(windowSrc) {
       windowEl.style.transition = "all 0.3s ease";
       windowEl.style.width = "900px";
       windowEl.style.height = "500px";
-      windowEl.style.left = "500px";
-      windowEl.style.top = "200px";
+      windowEl.style.left = "25%";
+      windowEl.style.top = "25%";
       windowEl.style.opacity = "1";
       windowEl.style.zIndex = ++zindex;
+
       icon.remove();
       preview.remove();
     });
   }
 }
+
+
+
+
+
+
+
+
 const currentSiteUrl = window.location.href + "?redirect=true";
 function launchBlob() {
   const htmlContent = `
