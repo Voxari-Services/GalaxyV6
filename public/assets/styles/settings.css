@@ -19,26 +19,6 @@ html {
 }
 
 /* Smoother font rendering */
-* {
-  -webkit-font-smoothing: antialiased;
-}
-@font-face {
-  font-family: fabrica;
-  src: url(/assets/fonts/fabrica-font/Fabrica-ZOjx.otf) format("woff2");
-}
-@font-face {
-  font-family: gravity;
-  src: url(/assets/fonts/gravity-font/GravityLight-66Ro.otf) format("woff2");
-}
-@font-face {
-  font-family: nunito;
-  src: url(/assets/fonts/nunito-font/NunitoExtralight-YzEeq.ttf);
-}
-@font-face {
-  font-family: royalCrescent;
-  src: url(/assets/fonts/royal-crescent-font/RoyalCrescent-G8BP.ttf);
-}
-
 h1 {
   font-size: 45px;
   font-weight: 300;
@@ -271,26 +251,4 @@ button:hover {
   background: #262626;
   color: #ffffff;
   transform: translatey(-3px);
-}
-/* Scrollbar width */
-::-webkit-scrollbar {
-  width: 12px; /* width of vertical scrollbar */
-  height: 12px; /* height of horizontal scrollbar */
-}
-
-/* Track (background) */
-::-webkit-scrollbar-track {
-  background: #505050; /* light gray */
-  border-radius: 10px; /* rounded corners */
-}
-
-/* Thumb (the draggable part) */
-::-webkit-scrollbar-thumb {
-  background: #a5a5a5; /* dark gray */
-  border-radius: 10px;
-}
-
-/* Thumb on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #696969; /* darker gray */
 }

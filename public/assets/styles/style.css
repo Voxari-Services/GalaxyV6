@@ -14,25 +14,6 @@ body {
   transition-duration: 0.4s;
   margin: 0px;
 }
-* {
-  -webkit-font-smoothing: antialiased;
-}
-@font-face {
-  font-family: fabrica;
-  src: url(/assets/fonts/fabrica-font/Fabrica-ZOjx.otf) format("woff2");
-}
-@font-face {
-  font-family: gravity;
-  src: url(/assets/fonts/gravity-font/GravityLight-66Ro.otf) format("woff2");
-}
-@font-face {
-  font-family: nunito;
-  src: url(/assets/fonts/nunito-font/NunitoExtralight-YzEeq.ttf);
-}
-@font-face {
-  font-family: royalCrescent;
-  src: url(/assets/fonts/royal-crescent-font/RoyalCrescent-G8BP.ttf);
-}
 
 /*--------------------------------*/
 /*--------------------------------*/

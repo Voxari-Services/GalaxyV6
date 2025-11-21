@@ -18,33 +18,6 @@ body {
   backdrop-filter: blur(10px);
 
 }
-@font-face {
-  font-family: fabrica;
-  src: url(../fonts/fabrica-font/Fabrica-ZOjx.otf) format("woff2");
-}
-@font-face {
-  font-family: gravity;
-  src: url(../fonts/gravity-font/GravityLight-66Ro.otf) format("woff2");
-}
-@font-face {
-  font-family: nunito;
-  src: url(../fonts/nunito-font/NunitoExtralight-YzEeq.ttf);
-}
-@font-face {
-  font-family: royal;
-  src: url(../fonts/royal-crescent-font/RoyalCrescent-G8BP.ttf);
-}
-@font-face {
-  font-family: segoe;
-  src: url(../fonts/Segoe-fonts/SegMDL2.ttf);
-}
-@font-face {
-  font-family: aovel;
-  src: url(../fonts/aovel-sans/AovelSansRounded-rdDL.ttf);
-}
-* {
-  -webkit-font-smoothing: antialiased;
-}
 #nav {
   top: 0;
   width: 100%;
@@ -322,28 +295,6 @@ body {
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently */
-}
-/* Scrollbar width */
-::-webkit-scrollbar {
-  width: 12px; /* width of vertical scrollbar */
-  height: 12px; /* height of horizontal scrollbar */
-}
-
-/* Track (background) */
-::-webkit-scrollbar-track {
-  background: #505050; /* light gray */
-  border-radius: 10px; /* rounded corners */
-}
-
-/* Thumb (the draggable part) */
-::-webkit-scrollbar-thumb {
-  background: #a5a5a5; /* dark gray */
-  border-radius: 10px;
-}
-
-/* Thumb on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #696969; /* darker gray */
 }
 
 .bookmarks {
