@@ -1,3 +1,12 @@
+import { openApp, loadingShow, loadingHide } from "/assets/js/openapps.js";
+import {
+  setTransport,
+  setWisp,
+  makeURL,
+  proxySJ,
+  proxyUV,
+} from "../../lithium.mjs";
+
 fetch("/assets/json/a.json")
   .then((response) => response.json())
   .then((games) => {
@@ -19,19 +28,26 @@ fetch("/assets/json/a.json")
       `;
 
       gameElement.addEventListener("click", async () => {
-        localStorage.setItem("previous", window.location.href);
-        console.log("previous page is " + window.location.href);
         if (game.url) {
           var ute = game.url;
-          document.getElementById("search").value = ute;
-          document.getElementById("submitbutton").click();
+          openApp(ute, "UV");
+          frame.style.zIndex = "1";
+
+          document.documentElement.style.overflow = "hidden";
+          const goBackBtn = document.getElementById("goBackBtn");
+          const iframe = document.getElementById("frame");
+          goBackBtn.style.top = "20px";
+
+          goBackBtn.addEventListener("click", () => {
+            iframe.style.zIndex = "-1";
+            iframe.src = "";
+            document.documentElement.style.overflow = "";
+            goBackBtn.style.top = "-80px";
+          });
         } else if (game.file) {
           var fil = game.file;
           localStorage.setItem("gameload", fil);
           window.location.href = "load.html";
-        } else if (game.name === "Just a Platformer") {
-          
-          window.location.href = "jap.html";
         }
       });
 
@@ -52,6 +68,7 @@ document.getElementById("gamesearch").addEventListener("input", function () {
     }
   });
 });
+
 document.querySelectorAll(".genre-filter").forEach((checkbox) => {
   checkbox.addEventListener("change", () => {
     const selectedGenres = Array.from(
@@ -72,6 +89,7 @@ document.querySelectorAll(".genre-filter").forEach((checkbox) => {
     });
   });
 });
+
 document.getElementById("randomGameButton").addEventListener("click", () => {
   const games = document.querySelectorAll(".game");
   if (games.length > 0) {

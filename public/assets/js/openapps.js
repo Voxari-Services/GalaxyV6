@@ -7,8 +7,8 @@ import {
 } from "../../lithium.mjs";
 
 export async function openurl(url, proxytype) {
-    let tabNumber = activeTabId.replace("tab", "");
-    let iframe = document.getElementById("frame" + tabNumber);
+  let tabNumber = activeTabId.replace("tab", "");
+  let iframe = document.getElementById("frame" + tabNumber);
   loadingShow();
   input.value = url;
   let URL;
@@ -33,6 +33,20 @@ export async function openurl(url, proxytype) {
     }
   };
 }
+export async function openApp(url, proxytype) {
+  let iframe = document.getElementById("frame");
+  ;
+  let URL;
+  if (proxytype === "SJ") {
+    URL = await proxySJ(makeURL(url));
+    console.log("set to SJ");
+  } else if (proxytype === "UV") {
+    URL = await proxyUV(makeURL(url));
+    console.log("set to UV");
+  }
+  iframe.src = URL;
+}
+
 let loadingNotice = document.createElement("div");
 
 export function loadingShow() {
