@@ -273,6 +273,7 @@ function openWindow(windowSrc) {
       icon.remove();
       preview.remove();
     });
+    
   }
 }
 const currentSiteUrl = window.location.href + "?redirect=true";

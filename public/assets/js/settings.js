@@ -180,26 +180,19 @@ function glassToggleButton() {
       `rgba(0, 0, 0, 1)`
     );
   } else {
-    document.documentElement.style.setProperty(
-      "--glassmorphismBG",
-      `rgba(0, 0, 0, 0.384)`
-    );
+    document.documentElement.style.removeProperty("--glassmorphismBG");
   }
 }
 function loadGlassToggle() {
   console.log("Loading auto status");
   glassToggle.checked = localStorage.getItem("glassToggleStore") == "true";
-    if (glassToggle.checked) {
+  if (glassToggle.checked) {
     document.documentElement.style.setProperty(
       "--glassmorphismBG",
       `rgba(0, 0, 0, 1)`
     );
   } else {
-    document.documentElement.style.setProperty(
-      "--glassmorphismBG",
-      `rgba(0, 0, 0, 0.384)`
-    );
+    document.documentElement.style.removeProperty("--glassmorphismBG");
   }
-
 }
 window.addEventListener("load", loadGlassToggle);
