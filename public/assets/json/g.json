@@ -1,380 +1,350 @@
 [
   {
-    "name": "1v1.lol",
-    "url": "https://1v1.lol",
-    "image": "1v1.jpg",
-    "genre": "Action"
-  },
-  {
-    "name": "10 Minutes Till dawn",
-    "file": "/assets/g/10-minutes-till-dawn",
-    "image": "10mtd.png",
-    "genre": "Action"
+    "name": "10 Minutes Till Dawn",
+    "file": "/assets/g/1.html",
+    "image": "1.png",
+    "genre": "Action / RPG"
   },
   {
     "name": "A Dark Room",
-    "file": "/assets/g/adarkroom",
-    "image": "adr.webp",
-    "genre": "Adventure"
+    "file": "/assets/g/2.html",
+    "image": "2.png",
+    "genre": "Casual / RPG"
   },
   {
     "name": "ADOFAI",
     "url": "https://w8.snokido.com/games/unity-webgl/dance-fire-and-ice/index.html",
-    "image": "adfi.png",
+    "image": "3.png",
     "genre": "Rhythm"
   },
   {
     "name": "Amazing Rope Police",
-    "file": "/assets/g/arp",
-    "image": "arp.jpg",
-    "genre": "Action"
+    "file": "/assets/g/4.html",
+    "image": "4.png",
+    "genre": "Action / Open World"
   },
   {
     "name": "Baldi's Basics",
-    "url": "https://en.gameslol.net/data/baldis-basics/index.html",
-    "image": "baldi.jpg",
+    "file": "/assets/g/5.html",
+    "image": "5.png",
     "genre": "Horror"
   },
   {
     "name": "Basketball Bros",
-    "file": "/assets/g/basketbros",
-    "image": "basketballbros.jpg",
-    "genre": "Multiplayer"
+    "file": "/assets/g/6.html",
+    "image": "6.png",
+    "genre": "Multiplayer / Arcade"
   },
   {
     "name": "Basketball Random",
-    "file": "/assets/g/basket-random",
-    "image": "basketrandom.jpg",
-    "genre": "Casual"
+    "file": "/assets/g/7.html",
+    "image": "7.png",
+    "genre": "Multiplayer / Arcade"
   },
   {
     "name": "BitLife",
-    "url": "https://www.rapidwebapp.com/game/BitLife/index.html",
-    "image": "bitlife.png",
+    "file": "/assets/g/8.html",
+    "image": "8.png",
     "genre": "Simulation"
   },
   {
-    "name": "BloonsTD",
-    "url": "https://games.crazygames.com/en_US/bloons-tower-defense/index.html?v=1.309",
-    "image": "bltd.png",
-    "genre": "Tower Defense"
-  },
-  {
     "name": "Boxing Random",
-    "file": "/assets/g/boxing-random",
-    "image": "boxingrandom.jpg",
-    "genre": "Casual"
+    "file": "/assets/g/9.html",
+    "image": "9.png",
+    "genre": "Arcade / Multiplayer"
   },
   {
     "name": "Cluster Rush",
     "url": "https://clusterrush.io/game/cluster-rush/",
-    "image": "cluster.jpg",
+    "image": "10.png",
     "genre": "Platformer"
   },
   {
     "name": "Cookie Clicker",
-    "url": "https://welldeef.github.io/",
-    "image": "cookie.jpg",
-    "genre": "Casual"
+    "file": "/assets/g/11.html",
+    "image": "11.png",
+    "genre": "Incremental"
   },
   {
     "name": "Deathrun 3D",
-    "file": "/assets/g/deathrun",
-    "image": "deathrun.jpg",
+    "file": "/assets/g/12.html",
+    "image": "12.pngX",
     "genre": "Arcade"
   },
   {
     "name": "Demonin's Item Shop",
     "url": "https://demonin.com/games/",
-    "image": "demonin.jpg",
-    "genre": "Other"
+    "image": "13.jpg",
+    "genre": "Simulation"
   },
   {
     "name": "Draw the hill",
-    "file": "/assets/g/dth",
-    "image": "dth.jpg",
-    "genre": "Car"
+    "file": "/assets/g/14.html",
+    "image": "14.pngX",
+    "genre": "Strategy / Racing"
   },
   {
     "name": "Drift Hunters",
-    "url": "https://htmlxm.github.io/h/drift-hunters/",
-    "image": "drift.jpg",
-    "genre": "Car"
+    "file": "/assets/g/15.html",
+    "image": "15.png",
+    "genre": "Racing"
   },
   {
     "name": "Drive Mad",
-    "file": "/assets/g/drive-mad",
-    "image": "drivemad.jpg",
-    "genre": "Car"
+    "file": "/assets/g/16.html",
+    "image": "16.png",
+    "genre": "Racing"
   },
   {
-    "name": "eagtek(Minecraft)",
-    "url": "https://lite.3kh0.net/projects/minecraft/",
-    "image": "eagtek.jpg",
-    "genre": "Multiplayer"
-  },
-  {
-    "name": "ev.io",
-    "url": "https://ev.io/",
-    "image": "ev.png",
-    "genre": "Action"
-  },
-  {
-    "name": "Fruit Ninja",
-    "url": "https://www.coolmathgames.com/sites/default/files/public_games/50823/?gd_sdk_referrer_url=https%3A%2F%2Fwww.coolmathgames.com%2F0-fruit-ninja",
-    "image": "fruit.jpg",
-    "genre": "arcade"
+    "name": "Minecraft 1.3",
+    "file": "/assets/g/17.html",
+    "image": "17.png",
+    "genre": "Multiplayer / Open World"
   },
   {
     "name": "GPOP",
     "url": "https://gpop.io/",
-    "image": "gpop.jpg",
+    "image": "19.png",
     "genre": "Rhythm"
   },
   {
     "name": "Helix Jump",
-    "url": "https://games.crazygames.com/en_US/helix-jump/index.html?v=1.319",
-    "image": "helix.jpg",
-    "genre": "Arcade"
+    "file": "/assets/g/20.html",
+    "image": "20.png",
+    "genre": "Arcade / Casual"
   },
   {
     "name": "HexGL",
-    "url": "https://hexgl.decloud.org/",
-    "image": "hexgl.png",
-    "genre": "Car"
+    "url": "https://hexgl.bkcore.com/play/",
+    "image": "21.png",
+    "genre": "Racing"
   },
   {
     "name": "Hole.io",
     "url": "https://holeio.me/g/41",
-    "image": "hole.jpeg",
+    "image": "22.png",
     "genre": "Multiplayer"
   },
   {
     "name": "Just a Platformer",
-    "image": "jap.png",
-    "genre": "platformer"
+    "image": "23.pngX",
+    "genre": "Platformer"
   },
   {
     "name": "Madalin Stunt Cars",
-    "url": "https://games.crazygames.com/en_US/madalin-stunt-cars-2/index.html?v=1.328/",
-    "image": "madalin.jpg",
-    "genre": "Car"
+    "url": "https://cargamesarena.com/wp-content/uploads/2025/08/madalin-stunt-cars-2.html",
+    "image": "24.png",
+    "genre": "Racing"
   },
   {
     "name": "Monkey Mart",
-    "file": "/assets/g/MonkeyMart",
-    "image": "monkeymart.jpg",
-    "genre": "Casual"
+    "file": "/assets/g/25.html",
+    "image": "25.png",
+    "genre": "Incremental"
   },
   {
     "name": "Moto X3M",
-    "url": "https://moto-x3m.net/main.html",
-    "image": "moto.jpg",
-    "genre": "Car"
+    "file": "/assets/g/26.html",
+    "image": "26.png",
+    "genre": "Racing"
   },
   {
     "name": "osu!",
     "url": "https://webosu.online/",
-    "image": "osu.jpg",
+    "image": "27.png",
     "genre": "Rhythm"
   },
   {
     "name": "ovo",
-    "file": "/assets/g/ovo",
-    "image": "ovo.jpg",
+    "file": "/assets/g/28.html",
+    "image": "28.png",
+    "genre": "Platformer"
+  },
+  {
+    "name": "ovo2",
+    "file": "/assets/g/60.html",
+    "image": "60.png",
+    "genre": "Platformer"
+  },
+  {
+    "name": "ovo3d",
+    "file": "/assets/g/61.html",
+    "image": "61.png",
     "genre": "Platformer"
   },
   {
     "name": "Paper.io",
     "url": "https://games.crazygames.com/en_US/paper-io-2/index.html?skipPrerollFirstSessionExp25=&v=1.329",
-    "image": "paperio.jpg",
+    "image": "29.pngX",
     "genre": "Multiplayer"
   },
   {
     "name": "PolyTrack",
-    "file": "/assets/g/polytrack",
-    "image": "polytrack.jpg",
-    "genre": "Car"
+    "file": "/assets/g/30.html",
+    "image": "30.png",
+    "genre": "Racing"
   },
   {
-    "name": "PolyTrack(New Ver.)",
-    "url": "https://www.kodub.com/apps/polytrack",
-    "image": "polytracknew.jpg",
-    "genre": "Car"
-  },
-  {
-    "name": "Resent Client",
+    "name": "Resent Minecraft",
     "url": "https://resent4-0.vercel.app/",
-    "image": "resent.png",
-    "genre": "Multiplayer"
+    "image": "31.png",
+    "genre": "Multiplayer / Open World"
   },
   {
     "name": "Retro Bowl",
-    "file": "/assets/g/retro-bowl",
-    "image": "retro.webp",
-    "genre": "Simulation"
+    "file": "/assets/g/32.html",
+    "image": "32.png",
+    "genre": "Arcade / Casual"
   },
   {
     "name": "Slice Master",
-    "url": "https://games.crazygames.com/en_US/slice-master/index.html?v=1.319/",
-    "image": "slice.avif",
+    "file": "/assets/g/33.html",
+    "image": "33.png",
     "genre": "Arcade"
   },
   {
     "name": "Slope",
-    "file": "/assets/g/slope",
-    "image": "slope.png",
+    "file": "/assets/g/34.html",
+    "image": "34.png",
+    "genre": "Arcade"
+  },
+  {
+    "name": "Slope 2 Player",
+    "file": "/assets/g/62.html",
+    "image": "34.pngx",
+    "genre": "Arcade"
+  },
+  {
+    "name": "Slope 3",
+    "file": "/assets/g/63.html",
+    "image": "34.pngx",
     "genre": "Arcade"
   },
   {
     "name": "Slow Roads",
-    "file": "/assets/g/slow-roads",
-    "image": "slowroads.jpg",
-    "genre": "Car"
+    "file": "/assets/g/35.html",
+    "image": "35.png",
+    "genre": "Racing / Open World"
   },
   {
     "name": "Smashkarts",
-    "file": "/assets/g/smashkarts",
-    "image": "smash.jpg",
+    "file": "/assets/g/36.html",
+    "image": "36.png",
     "genre": "Multiplayer"
   },
   {
     "name": "Soccer Random",
-    "file": "/assets/g/soccer-random",
-    "image": "soccerrandom.jpg",
-    "genre": "Casual"
+    "file": "/assets/g/37.html",
+    "image": "37.pngX",
+    "genre": "Multiplayer / Arcade"
   },
   {
     "name": "Space Waves",
-    "url": "https://games.crazygames.com/en_US/space-waves/index.html",
-    "image": "spacewaves.jpeg",
-    "genre": "Arcade"
+    "file": "/assets/g/38.html",
+    "image": "38.png",
+    "genre": "Platformer"
   },
   {
     "name": "Stickman Warriors",
     "url": "https://bitlifeonline.github.io/stickman-dragon-fight/",
-    "image": "stickman.jpg",
-    "genre": "Action"
+    "image": "39.png",
+    "genre": "Action / Arcade"
+  },
+  {
+    "name": "Stickman Combat",
+    "url": "https://bitlifeonline.github.io/stickman-dragon-fight/",
+    "image": "39.pngX",
+    "genre": "Action / Arcade"
   },
   {
     "name": "SuperHot",
-    "url": "https://games.crazygames.com/en_US/super-hot/index.html?v=1.309",
-    "image": "superhot.jpg",
-    "genre": "Action"
-  },
-  {
-    "name": "Tactical Assasin 2",
-    "file": "/assets/g/tacticalassasin2",
-    "image": "tactical.png",
-    "genre": "Action"
+    "file": "/assets/g/40.html",
+    "image": "40.png",
+    "genre": "Action / Shooter"
   },
   {
     "name": "Tanuki Sunset",
-    "file": "/assets/g/tanuki-sunset",
-    "image": "tanuki.jpg",
-    "genre": "Car"
+    "file": "/assets/g/42.html",
+    "image": "42.pngX",
+    "genre": "Racing"
   },
   {
-    "name": "Throw Rocks",
-    "file": "/assets/g/throwrocks",
-    "image": "throw.png",
-    "genre": "Arcade"
+    "name": "Throw Rocks at Shit",
+    "file": "/assets/g/43.html",
+    "image": "43.pngX",
+    "genre": "Strategy / Arcade"
   },
   {
     "name": "Tiny Fishing",
-    "file": "/assets/g/tiny-fishing",
-    "image": "tiny.jpg",
-    "genre": "Simulation"
+    "file": "/assets/g/44.html",
+    "image": "44.pngX",
+    "genre": "Arcade"
   },
   {
     "name": "Townscaper",
-    "file": "/assets/g/townscaper",
-    "image": "town.jpg",
+    "file": "/assets/g/45.html",
+    "image": "45.png",
     "genre": "Simulation"
   },
   {
     "name": "Tube Jumpers",
-    "file": "/assets/g/tube-jumpers",
-    "image": "tube.jpg",
-    "genre": "Arcade"
+    "file": "/assets/g/46.html",
+    "image": "46.png",
+    "genre": "Multiplayer"
   },
   {
     "name": "Tunnel Rush",
-    "file": "/assets/g/tunnel-rush",
-    "image": "tunnel.jpg",
+    "file": "/assets/g/47.html",
+    "image": "47.png",
     "genre": "Arcade"
   },
   {
     "name": "Two Player Tag",
-    "url": "https://games.construct.net/39/5545/embed.html?uid=0&o=1",
-    "image": "tpt.avif",
+    "file": "/assets/g/48.html",
+    "image": "48.png",
     "genre": "Multiplayer"
-  },
-  {
-    "name": "Veloce",
-    "file": "/assets/g/veloce",
-    "image": "veloce.jpg",
-    "genre": "Arcade"
   },
   {
     "name": "Venge.io",
     "url": "https://venge.io/",
-    "image": "venge.webp",
-    "genre": "Action"
+    "image": "50.png",
+    "genre": "Action / Shooter",
+    "type": "SJ"
   },
   {
     "name": "Vex 3",
-    "file": "/assets/g/vex3",
-    "image": "v3.avif",
-    "genre": "Platformer"
-  },
-  {
-    "name": "Vex 4",
-    "url": "https://htmlxm.github.io/h9/vex-4/",
-    "image": "vex4.jpeg",
-    "genre": "Platformer"
-  },
-  {
-    "name": "Vex 5",
-    "file": "/assets/g/vex5",
-    "image": "v5.jpg",
+    "file": "/assets/g/51.html",
+    "image": "51.png",
     "genre": "Platformer"
   },
   {
     "name": "Vex 6",
-    "file": "/assets/g/vex6",
-    "image": "v6.webp",
+    "file": "/assets/g/54.html",
+    "image": "54.png",
     "genre": "Platformer"
   },
   {
     "name": "Vex 7",
-    "file": "/assets/g/vex7",
-    "image": "v7.jpg",
+    "file": "/assets/g/55.html",
+    "image": "55.png",
     "genre": "Platformer"
   },
   {
     "name": "Weavesilk",
-    "file": "/assets/g/weavesilk",
-    "image": "weave.jpg",
-    "genre": "Art"
+    "file": "/assets/g/56.html",
+    "image": "56.pngX",
+    "genre": "Simulation"
   },
   {
     "name": "WebGL Fluid Simulation",
-    "file": "/assets/g/webgl-fluid-simulation",
-    "image": "optic.jpg",
+    "file": "/assets/g/57.html",
+    "image": "57.pngX",
     "genre": "Simulation"
   },
   {
     "name": "Wordle",
-    "file": "/assets/g/wordle",
-    "image": "wordle.jpg",
-    "genre": "Casual"
-  },
-  {
-    "name": "xx142-b2exe",
-    "file": "/assets/g/xx142-b2exe",
-    "image": "xx.jpg",
+    "file": "/assets/g/58.html",
+    "image": "58.png",
     "genre": "Casual"
   }
-  
 ]

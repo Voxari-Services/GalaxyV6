@@ -28,9 +28,15 @@ fetch("/assets/json/g.json")
       `;
 
       gameElement.addEventListener("click", async () => {
+        let xt;
         if (game.url) {
+          if (game.type) {
+            xt = game.type;
+          } else {
+            xt = "UV";
+          }
           var ute = game.url;
-          openApp(ute, "SJ");
+          openApp(ute, xt);
           frame.style.zIndex = "1";
 
           document.documentElement.style.overflow = "hidden";
@@ -46,8 +52,19 @@ fetch("/assets/json/g.json")
           });
         } else if (game.file) {
           var fil = game.file;
-          localStorage.setItem("gameload", fil);
-          window.location.href = "load.html";
+          frame.style.zIndex = "1";
+          frame.src = fil;
+          document.documentElement.style.overflow = "hidden";
+          const goBackBtn = document.getElementById("goBackBtn");
+          const iframe = document.getElementById("frame");
+          goBackBtn.style.top = "20px";
+
+          goBackBtn.addEventListener("click", () => {
+            iframe.style.zIndex = "-1";
+            iframe.src = "";
+            document.documentElement.style.overflow = "";
+            goBackBtn.style.top = "-80px";
+          });
         }
       });
 
@@ -63,6 +80,7 @@ document.getElementById("gamesearch").addEventListener("input", function () {
     const gameTag = game.querySelector("h2").textContent.toLowerCase();
     if (gameName.includes(searchitem) || gameTag.includes(searchitem)) {
       game.style.display = "flex";
+      game.style.opacity = "1";
     } else {
       game.style.display = "none";
     }
@@ -78,22 +96,27 @@ document.querySelectorAll(".genre-filter").forEach((checkbox) => {
     const games = document.querySelectorAll(".game");
 
     games.forEach((game) => {
-      const gameGenre = game
+      const gameGenreText = game
         .querySelector(".cardgenre")
         .textContent.toLowerCase();
-      if (selectedGenres.length === 0 || selectedGenres.includes(gameGenre)) {
+
+      const matches =
+        selectedGenres.length === 0 ||
+        selectedGenres.some((filter) => gameGenreText.includes(filter));
+
+      if (matches) {
         game.style.display = "flex";
+        game.style.opacity = "1";
       } else {
         game.style.display = "none";
       }
     });
   });
 });
-
 document.getElementById("randomGameButton").addEventListener("click", () => {
   const games = document.querySelectorAll(".game");
   if (games.length > 0) {
     const randomIndex = Math.floor(Math.random() * games.length);
-    games[randomIndex].click(); 
+    games[randomIndex].click();
   }
 });
