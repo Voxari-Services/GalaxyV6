@@ -19,25 +19,36 @@
   <body>
     <div class="nav">
       <div class="navItems navStagger" onclick="openWindow('p.html')">
-        <img src="assets/img/icons/browser.png" class="icons" />
+        <img title="Browser" src="assets/img/icons/browser.png" class="icons" />
       </div>
       <div class="navItems navStagger" onclick="openWindow('g/index.html')">
-        <img src="assets/img/icons/controller.png" class="icons" />
+        <img title="Games" src="assets/img/icons/controller.png" class="icons" />
       </div>
       <div class="navItems navStagger" onclick="openWindow('a/index.html')">
-        <img src="assets/img/icons/apps.png" class="icons" />
+        <img title="Apps" src="assets/img/icons/apps.png" class="icons" />
       </div>
       <div
         class="navItems navStagger"
-        onclick="openWindow('app.html');localStorage.setItem('storeAppURL', 'https://discord.com/app');localStorage.setItem('tempProxy', 'UV')"
+        onclick="openWindow('app.html');localStorage.setItem('storeAppURL', 'https://play.geforcenow.com/');"
       >
-        <img src="assets/img/icons/discord.png" class="icons" />
+        <img title="GeForce" src="assets/img/icons/nvidia.png" class="icons" />
+      </div>
+
+      <div
+        class="navItems navStagger"
+        onclick="openWindow('app.html');localStorage.setItem('storeAppURL', 'https://discord.com/');localStorage.setItem('tempProxy', 'UV')"
+      >
+        <img title="Discord" src="assets/img/icons/discord.png" class="icons" />
       </div>
       <div
         class="navItems navStagger"
         onclick="openWindow('settings/index.html')"
       >
-        <img src="assets/img/icons/settings.png" class="icons" />
+        <img
+          title="Settings"
+          src="assets/img/icons/settings.png"
+          class="icons"
+        />
       </div>
       <div id="minimizedContainer"></div>
     </div>
