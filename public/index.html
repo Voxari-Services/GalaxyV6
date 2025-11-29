@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GalaxyV6</title>
-    <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/assets.css" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
 
     <link
       rel="stylesheet"
@@ -16,7 +16,7 @@
     <script defer src="assets/js/auto.js"></script>
     <script type="module" defer src="assets/js/search.js"></script>
   </head>
-  <body onload="checkVersion()">
+  <body onload="openWindow('updates.html', '0%', '0%', '526px', '512.5px');">
     <div class="nav">
       <div class="navItems navStagger" onclick="openWindow('p.html')">
         <img title="Browser" src="assets/img/icons/browser.png" class="icons" />
@@ -60,13 +60,13 @@
     <div id="snap-right" class="snap-preview"></div>
   </body>
   <script>
-    const latestVersion = "6.0";
-    const storedVersion = localStorage.getItem("galaxyVersion");
-function checkVersion() {
-    if (storedVersion !== latestVersion) {
-      openWindow("updates.html", "0%", "0%", "60%", "30%");
-      localStorage.setItem("galaxyVersion", latestVersion);
-    }
-    }
+    // const latestVersion = "6.0";
+    // const storedVersion = localStorage.getItem("galaxyVersion");
+    // function checkVersion() {
+    //   if (storedVersion !== latestVersion) {
+    //     openWindow("updates.html", "0%", "0%", "60%", "30%");
+    //     localStorage.setItem("galaxyVersion", latestVersion);
+    //   }
+    // }
   </script>
 </html>

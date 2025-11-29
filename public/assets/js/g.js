@@ -157,9 +157,9 @@ function renderGames(games) {
     }
   });
   document.getElementById("requestGameButton").addEventListener("click", () => {
-    console.log("HELP");
-    openApp("https://forms.gle/o3XaJw563qLt4YVn9", "SJ");
+  iframe.src = "/report.html";
     iframe.style.zIndex = "9998";
+    iframe.style.opacity = "1";
     document.documentElement.style.overflow = "hidden";
     const goBackBtn = document.getElementById("goBackBtn");
     goBackBtn.style.top = "20px";
@@ -168,7 +168,7 @@ function renderGames(games) {
       iframe.src = "";
       document.documentElement.style.overflow = "";
       goBackBtn.style.top = "-80px";
-      iframe.src = "";
+    iframe.style.opacity = "0";
     });
   });
 

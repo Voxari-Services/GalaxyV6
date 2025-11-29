@@ -1,6 +1,6 @@
 :root {
   /* --backgroundURL: url("../img/black.jpg"); */
-  --glassmorphismBG: rgba(0, 0, 0, 0.384);
+  --glassmorphismBG: rgba(36, 35, 35, 0.196);
   --glassmorphismBlocks: rgba(95, 95, 95, 0.219);
 }
 
@@ -33,7 +33,7 @@
 }
 /* Scrollbar width */
 ::-webkit-scrollbar {
-  width: 8px; /* width of vertical scrollbar */
+  width: 7px; /* width of vertical scrollbar */
   height: 12px; /* height of horizontal scrollbar */
 }
 

@@ -114,10 +114,5 @@ function getOriginalUrl(url) {
   }
   return url;
 }
-async function bugReports() {
-  newTab();
-  input.value = "https://forms.gle/rK5gcpLTwPGreqXs6";
-  input.dispatchEvent(
-    new KeyboardEvent("keyup", { key: "Enter", keyCode: 13, bubbles: true })
-  );
-}
+const currentSiteUrl = window.location.origin;
+

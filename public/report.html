@@ -1,0 +1,134 @@
+<form id="bugForm">
+  <label for="bug">What's your name?</label><br />
+  <textarea id="name" name="name" rows="4" cols="50"></textarea><br />
+  <label for="bug">Describe the request/bug:</label><br />
+  <textarea id="bug" name="bug" rows="4" cols="50"></textarea><br />
+  <button type="submit" id="submitBtn">Submit Report</button>
+</form>
+
+<div id="sent"></div>
+<div id="failed"></div>
+
+<script type="module">
+  const webhookURL =
+    "https://discord.com/api/webhooks/1444188888372346985/R7xwaZLEI7kVMd7d_FUZ6Y4Y6fB-L8uLAcLXvxiXXy3T0Ta4NVCstfp-gK4Ejj4OrwTO";
+
+  const form = document.getElementById("bugForm");
+  const submitBtn = document.getElementById("submitBtn");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const bugText = document.getElementById("bug").value;
+    const userName = document.getElementById("name").value;
+
+    // Disable button for cooldown
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Please wait 15s...";
+
+    try {
+      const response = await fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: `# New Bug Report!`,
+          embeds: [
+            {
+              title: "Bug Report",
+              type: "rich",
+              color: 0xff0000,
+              fields: [
+                { name: "Reporter", value: userName, inline: true },
+                { name: "Description", value: bugText },
+              ],
+              footer: { text: "Galaxy Bug Report" },
+              timestamp: new Date().toISOString(),
+            },
+          ],
+        }),
+      });
+
+      if (response.ok) {
+        document.getElementById("sent").innerText = "Bug report sent! \n You can view your report on https://tinyurl.com/galaxyiscool";
+        document.getElementById("failed").innerText = "";
+      } else {
+        document.getElementById("failed").innerText =
+          "Failed to send bug report.";
+        document.getElementById("sent").innerText = "";
+      }
+    } catch (err) {
+      document.getElementById("failed").innerText = "Error: " + err.message;
+      document.getElementById("sent").innerText = "";
+    }
+
+    // Re-enable button after 30 seconds
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit Bug Report";
+    }, 15000);
+  });
+</script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #bugForm {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+
+  #bugForm label {
+    font-weight: bold;
+    display: block;
+    margin: 12px 0 6px;
+    color: #333;
+  }
+
+  #bugForm textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+    font-size: 14px;
+    font-family: inherit;
+  }
+
+  #bugForm button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: #8d8d8d;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  #bugForm button:hover {
+    background: #3e3e3e;
+  }
+
+  #sent {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #2a9d8f;
+  }
+  #failed {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #9d2a2a;
+  }
+</style>

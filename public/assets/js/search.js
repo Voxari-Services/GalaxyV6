@@ -6,6 +6,7 @@ import {
   proxyUV,
 } from "../../lithium.mjs";
 import("../../uv/uv.config.js");
+
 let iframe;
 let protocol = location.protocol === "https:" ? "wss://" : "ws://";
 let host = location.host;
@@ -25,7 +26,6 @@ document.addEventListener("keyup", async (e) => {
     let tabNumber = activeTabId.replace("tab", "");
     iframe = document.getElementById("frame" + tabNumber);
     if (
-      //Checks for https in url
       input.value.trim().includes(".") &&
       !input.value.trim().startsWith("http://") &&
       !input.value.trim().startsWith("https://")
@@ -49,7 +49,7 @@ document.addEventListener("keyup", async (e) => {
       loadingNotice.style.animation = "noticeHide 0.4s forwards";
     });
     let url = input.value;
-    let proxyType = localStorage.getItem("proxyType"); //Checks for proxy
+    let proxyType = localStorage.getItem("proxyType"); //Checks for proxy stuff
     if (url.includes("nvidia") || url.includes("geforce")) {
       let geforceNotice = document.createElement("div");
       geforceNotice.className = "notice";
@@ -124,3 +124,10 @@ document.addEventListener("keyup", async (e) => {
     }
   }
 });
+function bugReports() {
+  newTab();
+    let tabNumber = activeTabId.replace("tab", "");
+    iframe = document.getElementById("frame" + tabNumber);
+  iframe.src = "/report.html";
+}
+window.bugReports = bugReports;
