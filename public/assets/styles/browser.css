@@ -17,6 +17,7 @@ body {
   top: 0;
   width: 100%;
   display: flex;
+  height: 50px;
   flex-direction: row;
   gap: 5px;
   align-items: center;
@@ -27,29 +28,26 @@ body {
   top: 0;
   display: flex;
   flex-direction: row;
-  gap: 5px;
   align-items: center;
 }
 .tab {
-  margin-top: 10px;
-  height: 35px;
+  margin-left: 5px;
+  height: 30px;
   width: 50px;
-  background-color: rgba(44, 44, 44, 0.39);
+  background-color: #3535355d;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  border-radius: 20px;
   padding-left: 15px;
   padding-right: 15px;
   cursor: default;
   transition-duration: 0.2s;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 100px;
 }
 .tab:hover {
-  background-color: rgba(87, 87, 87, 0.39);
+  background-color: #6968685d;
 }
 @keyframes openTab {
   from {
@@ -57,8 +55,7 @@ body {
   }
   to {
     border-radius: 0px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
 
     width: 150px;
   }
@@ -73,7 +70,8 @@ body {
 }
 
 .tab.active {
-  background-color: #252525;
+  background-color: #7e7d7d5d;
+  border: 1px solid rgba(255, 255, 255, 0.418);
 }
 
 .favicon {
@@ -92,13 +90,14 @@ body {
 .close {
   margin-left: auto;
   font-family: segoe;
-  font-size: 15px;
+  font-size: 12px;
   cursor: pointer;
   opacity: 0.7;
   transition: 0.2s;
 }
 .close:hover {
   opacity: 1;
+  color: rgb(172, 56, 56);
 }
 #plusdiv {
   height: 30px;
@@ -108,9 +107,9 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0px;
-  border-radius: 100px;
-  margin-top: 15px;
+  border-radius: 100%;
   transition-duration: 0.2s;
+  background-color: rgba(110, 110, 110, 0.411);
 }
 .plus {
   font-weight: 400;
@@ -118,6 +117,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0px;
   cursor: pointer;
+  line-height: 30px;
 }
 #plusdiv:hover {
   transform: rotate(90deg);
@@ -285,7 +285,8 @@ body {
 .bookmarklets,
 .notice,
 .windowcontrolicon,
-.search {
+.search,
+.tab {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -295,7 +296,7 @@ body {
 }
 
 .bookmarks {
-  height: 40px;
+  height: 18px;
   width: 100%;
   border-bottom: 2px solid #3f3f3f;
   display: flex;
@@ -307,7 +308,7 @@ body {
 }
 .bookmarklets {
   align-items: center;
-  padding: 8px;
+  padding: 5px;
   transition-duration: 0.3s;
   font-size: 12px;
   font-family: fabrica;

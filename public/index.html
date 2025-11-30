@@ -17,6 +17,10 @@
     <script type="module" defer src="assets/js/search.js"></script>
   </head>
   <body onload="checkVersion();">
+    <div class="update" id="update">
+      <h1>It looks like you're using an outdated version of Galaxy...</h1>
+      <h2>Update it by doing `Ctrl + Shift + R`</h2>
+    </div>
     <div class="topNav">
       <p
         class="nameVer"
@@ -35,7 +39,6 @@
         onclick="openWindow('g/index.html', '0%', '0%', 'calc(100% - 51px)', '99.999%')"
       >
         <img
-        
           title="Games"
           src="assets/img/icons/controller.png"
           class="icons"
@@ -76,10 +79,15 @@
     <div id="snap-right" class="snap-preview"></div>
   </body>
   <script>
-    const latestVersion = "6.0";
+    const latestVersion = "6.1";
     const storedVersion = localStorage.getItem("galaxyVersion");
+    function update() {
+      let updateDiv = document.getElementById("update");
+      updateDiv.style.display = "flex";
+    }
     function checkVersion() {
       if (storedVersion !== latestVersion) {
+        update();
         openWindow("updates.html", "0%", "20px  ", "60%", "30%");
         localStorage.setItem("galaxyVersion", latestVersion);
       }

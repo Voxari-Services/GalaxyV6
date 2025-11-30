@@ -49,7 +49,8 @@ body {
 .welcomeMsgDiv,
 .window,
 .nav,
-.topNav {
+.topNav,
+.update {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -473,4 +474,24 @@ body {
   width: 100%;
   height: calc(100% - 25px);
   display: none;
+}
+.update {
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  position: fixed;
+  background: transparent;
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  background: #000000de;
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
+}
+.update h1, .update h2 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }

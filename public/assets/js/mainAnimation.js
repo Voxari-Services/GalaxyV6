@@ -1,6 +1,6 @@
-if (localStorage.getItem("onboarding") == null) {
-  location.href = "onboarding/";
-}
+// if (localStorage.getItem("onboarding") == null) {
+//   location.href = "onboarding/";
+// }
 
 let UserName = localStorage.getItem("name");
 let backgroundURL = localStorage.getItem("backgroundURL");
@@ -36,7 +36,6 @@ function openWindow(
   const windowEl = document.createElement("div");
   const iframe = document.createElement("iframe");
   let windowValue = "1";
-
   windowEl.className = "window";
   windowEl.style.position = "absolute";
   windowEl.style.left = windowLeft || "19%";
@@ -326,7 +325,7 @@ function openWindow(
       snapRight.classList.remove("snap-active");
       windowEl.style.transition = "all 0.25s ease";
       windowEl.style.left = "50vw";
-      windowEl.style.top = "23px";
+      windowEl.style.top = "0px";
       windowEl.style.width = "50vw";
       windowEl.style.height = "calc(100% - 52px)";
     }
@@ -571,3 +570,7 @@ function updateTime() {
 }
 setInterval(updateTime, 1000);
 updateTime();
+
+
+
+  
