@@ -41,7 +41,7 @@
     "name": "Chess",
     "url": "https://chess.com",
     "image": "6.png",
-    "genre": "Gaming"
+    "genre": "Other"
   },
   {
     "name": "COMET-HANG3R",
@@ -53,25 +53,25 @@
     "name": "Cool Math Games",
     "url": "https://coolmathgames.com",
     "image": "8.png",
-    "genre": "Gaming"
+    "genre": "Other"
   },
   {
     "name": "Crazy Games",
     "url": "https://crazygames.com",
     "image": "9.png",
-    "genre": "Gaming"
+    "genre": "Other"
   },
   {
     "name": "Demonin's Item Shop",
     "url": "https://demonin.com/games/",
     "image": "26.jpg",
-    "genre": "Gaming"
+    "genre": "Other"
   },
   {
     "name": "Galaxy.Click",
     "url": "https://galaxy.click/",
     "image": "10.png",
-    "genre": "Gaming"
+    "genre": "Other"
   },
   {
     "name": "Google Gemini",
@@ -91,13 +91,6 @@
     "url": "https://grok.com",
     "image": "13.jpeg",
     "genre": "AI"
-  },
-  {
-    "name": "MoviesTV",
-    "url": "https://moviestv.space/",
-    "image": "27.png",
-    "genre": "Streaming",
-    "type": "UV"
   },
   {
     "name": "Paramount Plus",
@@ -121,7 +114,7 @@
     "name": "Poki",
     "url": "https://poki.com/",
     "image": "19.png",
-    "genre": "Gaming"
+    "genre": "Other"
   },
 
   {
@@ -169,6 +162,6 @@
     "name": "Y8 Games",
     "url": "https://www.y8.com/",
     "image": "25.png",
-    "genre": "Gaming"
+    "genre": "Other"
   }
 ]
