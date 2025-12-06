@@ -15,10 +15,6 @@
     <script defer type="module" src="assets/js/navFunctions.js"></script>
     <script defer src="assets/js/auto.js"></script>
     <link rel="stylesheet" href="../assets/styles/assets.css" />
-    <script
-      src="https://kit.fontawesome.com/adc83d139e.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body id="body">
     <div id="nav">
@@ -29,20 +25,29 @@
     </div>
     <div class="toolbar">
       <div class="goBack toolbarBtn" id="goBack">
-        <i class="fa-solid navIconSolid fa-arrow-left" aria-hidden="true"></i>
+        <img
+          src="assets/img/icons/left-arrow.png"
+          class="searchIcons navIconSolid"
+        />
       </div>
       <div class="goForward toolbarBtn" id="goForward">
-        <i class="fa-solid navIconSolid fa-arrow-right" aria-hidden="true"></i>
+        <img
+          src="assets/img/icons/right-arrow.png"
+          class="searchIcons navIconSolid"
+        />
       </div>
       <div class="reload toolbarBtn" id="reload" onclick="reloadX()">
-        <i class="fa-solid navIconSolid fa-rotate-right" aria-hidden="true"></i>
+        <img
+          src="assets/img/icons/reload.png"
+          class="searchIcons navIconSolid"
+        />
       </div>
       <div class="search-container">
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <img src="assets/img/icons/search1.png" class="searchIcons" />
         <input id="rogoisdabest" placeholder="Search" class="search" />
       </div>
       <div class="more toolbarBtn" id="more">
-        <i class="fa-solid navIconSolid fa-ellipsis"></i>
+        <img src="assets/img/icons/more.png" class="searchIcons navIconSolid" />
 
         <div id="moreMenu" class="menu">
           <div id="changeProxy" class="menuItem">

@@ -128,72 +128,70 @@
           Disable Glassmorphism to improve performance on lower end devices.
         </p>
         <input
-          type="checkbox"
-          role="switch"
-          class="circle"
-          checked
-          onclick="glassToggleButton()"
-          id="toggleGlassmorphism"
+          type="range"
+          id="glassmorphism-slider"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.432"
         />
       </div>
 
       <div class="block">
         <h2 class="blockTitle">Change Background</h2>
-        <p class="desc">
-          Please note that the image you upload must be under 10 megabytes.
-        </p>
+        <p class="desc">For live backgrounds, use gifs</p>
         <div class="chooseBg stagger2" id="chooseBg">
           <div class="sdf stagger2">
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/bg3.png')"
+              onclick="setDefaultBackground('../img/bg3.png')"
             >
               <img src="../assets/img/bg3.png" class="bgimg" />
             </div>
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/bg1.webp')"
+              onclick="setDefaultBackground('../img/bg1.webp')"
             >
               <img src="../assets/img/bg1.webp" class="bgimg" />
             </div>
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/bg2.jpg')"
+              onclick="setDefaultBackground('../img/bg2.jpg')"
             >
               <img src="../assets/img/bg2.jpg" class="bgimg" />
             </div>
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/bg4.jpg')"
+              onclick="setDefaultBackground('../img/bg4.jpg')"
             >
               <img src="../assets/img/bg4.jpg" class="bgimg" />
             </div>
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/bg5.png')"
+              onclick="setDefaultBackground('../img/bg5.png')"
             >
               <img src="../assets/img/bg5.png" class="bgimg" />
             </div>
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/bg6.png')"
+              onclick="setDefaultBackground('../img/bg6.png')"
             >
               <img src="../assets/img/bg6.png" class="bgimg" />
             </div>
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/bg7.png')"
+              onclick="setDefaultBackground('../img/bg7.png')"
             >
               <img src="../assets/img/bg7.png" class="bgimg" />
             </div>
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/bg8.png')"
+              onclick="setDefaultBackground('../img/bg8.png')"
             >
               <img src="../assets/img/bg8.png" class="bgimg" />
             </div>
 
-            <div class="bgselect stagger2 uploaddiv" id="uplaoddiv">
+            <div class="bgselect stagger2 uploaddiv" id="uploaddiv">
               <img src="../assets/img/upload.png" class="bgimg upload" />
               <input
                 type="file"
@@ -211,13 +209,13 @@
           <div class="sdf stagger2">
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/gojo.gif')"
+              onclick="setDefaultBackground('../img/gojo.gif')"
             >
               <img src="../assets/img/gojo.gif" class="bgimg" />
             </div>
             <div
               class="bgselect stagger2"
-              onclick="setBackground('../img/space.gif')"
+              onclick="setDefaultBackground('../img/space.gif')"
             >
               <img src="../assets/img/space.gif" class="bgimg" />
             </div>

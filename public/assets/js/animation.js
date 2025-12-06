@@ -313,51 +313,70 @@ function ghost2() {
     }
   );
 }
-
 let backgroundURL = localStorage.getItem("backgroundURL");
-if (backgroundURL == null) {
-  localStorage.setItem("backgroundURL", "../img/bg3.png");
-} else {
-}
-backgroundURL = localStorage.getItem("backgroundURL");
 
-document.documentElement.style.setProperty(
-  "--backgroundURL",
-  `url(${backgroundURL})`
-);
-
-function setBackground(bg) {
-  localStorage.setItem("backgroundURL", bg);
-  let backgroundURL = localStorage.getItem("backgroundURL");
+function setDefaultBackground(url) {
+  localStorage.setItem("backgroundURL", url);
+  backgroundURL = localStorage.getItem("backgroundURL");
   document.documentElement.style.setProperty(
     "--backgroundURL",
-    `url(${backgroundURL})`
+    `url(${url})`
   );
 }
-const uploadDiv = document.getElementById("uplaoddiv");
-const fileInput = document.getElementById("fileInput");
-let file;
-uploadDiv.addEventListener("click", () => {
-  fileInput.click();
-  file = "";
-});
-fileInput.addEventListener("change", () => {
-  file = fileInput.files[0];
+if (backgroundURL == null) {
+  localStorage.setItem("backgroundURL", "../img/bg3.png");
+}
 
-  if (file && file.type.startsWith("image/")) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const uploadedimg = reader.result;
-      localStorage.setItem("backgroundURL", uploadedimg);
-      backgroundURL = uploadedimg;
-      document.documentElement.style.setProperty(
-        "--backgroundURL",
-        `url(${backgroundURL})`
-      );
-    };
-    reader.readAsDataURL(file);
+const DB_NAME = "WebsiteSettingsDB";
+const STORE_NAME = "backgrounds";
+const KEY = "userBackground";
+
+function openWebsiteDB() {
+  return new Promise(resolve => {
+    const req = indexedDB.open(DB_NAME, 1);
+
+    req.onupgradeneeded = () =>
+      req.result.createObjectStore(STORE_NAME);
+
+    req.onsuccess = () =>
+      resolve(req.result);
+  });
+}
+
+async function useStore(mode, cb) {
+  const db = await openWebsiteDB();
+  return new Promise(resolve => {
+    const tx = db.transaction(STORE_NAME, mode);
+    const store = tx.objectStore(STORE_NAME);
+    const req = cb(store);
+    tx.oncomplete = () => resolve(req.result);
+  });
+}
+
+async function setBackground(fileBlob) {
+  await useStore("readwrite", s => s.put(fileBlob, KEY));
+  await applyBackgroundFromDB();
+}
+
+async function applyBackgroundFromDB() {
+  const blob = await useStore("readonly", s => s.get(KEY));
+  if (blob) {
+    const url = URL.createObjectURL(blob);
+    localStorage.setItem("backgroundURL", url);
+    document.documentElement.style.setProperty("--backgroundURL", `url(${url})`);
   }
-});
+}
+
+const uploadDiv = document.getElementById("uploaddiv");
+const fileInput = document.getElementById("fileInput");
+
+if (uploadDiv && fileInput) {
+  uploadDiv.onclick = () => fileInput.click();
+  fileInput.onchange = () => {
+    const file = fileInput.files[0];
+    if (file?.type.startsWith("image/")) setBackground(file);
+  };
+}
 
 function ghost3() {
   localStorage.setItem("onboarding", "");

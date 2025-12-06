@@ -1,19 +1,64 @@
 let UserName = localStorage.getItem("name");
 let backgroundURL = localStorage.getItem("backgroundURL");
+const DB_NAME = "WebsiteSettingsDB";
+const STORE_NAME = "backgrounds";
+const KEY = "userBackground";
 if (backgroundURL == null) {
   localStorage.setItem("backgroundURL", "../img/bg3.png");
+  backgroundURL = localStorage.getItem("backgroundURL");
 }
-backgroundURL = localStorage.getItem("backgroundURL");
+async function useStore(mode, cb) {
+  const db = await openWebsiteDB();
+  return new Promise((resolve) => {
+    const tx = db.transaction(STORE_NAME, mode);
+    const store = tx.objectStore(STORE_NAME);
+    const req = cb(store);
+    tx.oncomplete = () => resolve(req.result);
+  });
+}
+function openWebsiteDB() {
+  return new Promise((resolve) => {
+    const req = indexedDB.open(DB_NAME, 1);
 
-document.documentElement.style.setProperty(
-  "--backgroundURL",
-  `url(${backgroundURL})`
-);
+    req.onupgradeneeded = () => req.result.createObjectStore(STORE_NAME);
+
+    req.onsuccess = () => resolve(req.result);
+  });
+}
+
+async function setBackground(fileBlob) {
+  await useStore("readwrite", (s) => s.put(fileBlob, "userBackground"));
+  await applyBackgroundFromDB();
+}
+
+async function applyBackgroundFromDB() {
+  const blob = await useStore("readonly", (s) => s.get("userBackground"));
+  if (blob) {
+    const url = URL.createObjectURL(blob);
+    console.log("UPLOADED URL: " + url);
+    localStorage.setItem("backgroundURL", url);
+    document.documentElement.style.setProperty(
+      "--backgroundURL",
+      `url(${url})`
+    );
+  }
+}
+
+(async () => {
+  if (backgroundURL.startsWith("blob")) {
+    await applyBackgroundFromDB();
+  } else {
+    document.documentElement.style.setProperty(
+      "--backgroundURL",
+      `url(${backgroundURL})`
+    );
+  }
+})();
 
 gsap.fromTo(
   ".navStagger",
-  { y: 30, opacity: 0 },
-  { duration: 0.4, y: 0, opacity: 1, stagger: 0.1 }
+  { y: 50, opacity: 0 },
+  { duration: 0.4, y: 0, opacity: 1, stagger: 0.05 }
 );
 let x = localStorage.getItem("name");
 
@@ -392,6 +437,11 @@ function openWindow(
     icon.className = "minimizedWindowIcon";
     minimizedContainer.appendChild(icon);
 
+    const savedLeft = windowEl.style.left;
+    const savedTop = windowEl.style.top;
+    const savedWidth = windowEl.style.width;
+    const savedHeight = windowEl.style.height;
+
     const rect = icon.getBoundingClientRect();
 
     windowEl.style.transition = "all 0.3s ease";
@@ -426,10 +476,12 @@ function openWindow(
     icon.addEventListener("click", () => {
       windowEl.style.display = "flex";
       windowEl.style.transition = "all 0.3s ease";
-      windowEl.style.width = "900px";
-      windowEl.style.height = "500px";
-      windowEl.style.left = "25%";
-      windowEl.style.top = "25%";
+
+      windowEl.style.width = savedWidth;
+      windowEl.style.height = savedHeight;
+      windowEl.style.left = savedLeft;
+      windowEl.style.top = savedTop;
+
       windowEl.style.opacity = "1";
 
       focusCurrentWindow();
@@ -584,4 +636,3 @@ function auto() {
     );
   }
 }
-

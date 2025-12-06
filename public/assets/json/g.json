@@ -467,7 +467,7 @@
   },
   {
     "name": "Just a Platformer",
-    "file": "/assets/g/jap/index.html",
+    "file": "/assets/g/jap/levelEditor/index.html",
     "image": "23.png",
     "genre": "Platformer"
   },

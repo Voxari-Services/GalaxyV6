@@ -233,8 +233,31 @@ body {
 .nameVer:hover {
   background-color: #beb7b7ba;
 }
-.timeDisplay {
+.right, .left {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.right {
   margin-left: auto;
+}
+.bugReport {
+  margin: 0;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.bugReport:hover {
+  background-color: #36363627;
+}
+.report {
+  height: 20px;
+}
+.timeDisplay {
   padding: 5px;
   font-family: fabrica;
   margin-right: 15px;

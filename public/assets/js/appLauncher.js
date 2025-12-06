@@ -25,7 +25,7 @@ function launchApp() {
     frame.style.zIndex = "1";
   }else {
     const currentSiteUrl =
-      "/scramjet/https%3A%2F%2Fplay.geforcenow.com%2Fmall%2F#%2Floginwall";
+      "/scramjet/https%3A%2F%2Ftinyurl.com%2Fgegegegegewoohooo";
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("frame").src = currentSiteUrl;
     });

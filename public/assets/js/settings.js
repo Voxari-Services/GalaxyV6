@@ -113,79 +113,92 @@ function updateName() {
 updateName();
 let backgroundURL = localStorage.getItem("backgroundURL");
 
-function setBackground(bg) {
-  localStorage.setItem("backgroundURL", bg);
+function setDefaultBackground(url) {
+  localStorage.setItem("backgroundURL", url);
   backgroundURL = localStorage.getItem("backgroundURL");
-  document.documentElement.style.setProperty(
-    "--backgroundURL",
-    `url(${backgroundURL})`
-  );
+  document.documentElement.style.setProperty("--backgroundURL", `url(${url})`);
 }
+const DB_NAME = "WebsiteSettingsDB";
+const STORE_NAME = "backgrounds";
+const KEY = "userBackground";
+
+function openWebsiteDB() {
+  return new Promise((resolve) => {
+    const req = indexedDB.open(DB_NAME, 1);
+
+    req.onupgradeneeded = () => req.result.createObjectStore(STORE_NAME);
+
+    req.onsuccess = () => resolve(req.result);
+  });
+}
+
+async function useStore(mode, cb) {
+  const db = await openWebsiteDB();
+  return new Promise((resolve) => {
+    const tx = db.transaction(STORE_NAME, mode);
+    const store = tx.objectStore(STORE_NAME);
+    const req = cb(store);
+    tx.oncomplete = () => resolve(req.result);
+  });
+}
+
+async function setBackground(fileBlob) {
+  await useStore("readwrite", (s) => s.put(fileBlob, KEY));
+  await applyBackgroundFromDB();
+}
+
+async function applyBackgroundFromDB() {
+  const blob = await useStore("readonly", (s) => s.get(KEY));
+  if (blob) {
+    const url = URL.createObjectURL(blob);
+    console.log("UPLOADED URL: " + url);
+    localStorage.setItem("backgroundURL", url);
+    document.documentElement.style.setProperty(
+      "--backgroundURL",
+      `url(${url})`
+    );
+  }
+}
+
+const uploadDiv = document.getElementById("uploaddiv");
+const fileInput = document.getElementById("fileInput");
+
+if (uploadDiv && fileInput) {
+  uploadDiv.onclick = () => fileInput.click();
+  fileInput.onchange = () => {
+    const file = fileInput.files[0];
+    if (file?.type.startsWith("image/")) setBackground(file);
+  };
+}
+
 function setProxyType(x) {
   localStorage.setItem("proxyType", x);
-  loadingShow("Set to " + x)
+  loadingShow("Set to " + x);
 }
 function setSearchEngine(z) {
   localStorage.setItem("searchEngine", z);
-  loadingShow("Saved")
+  loadingShow("Saved");
 }
-const uploadDiv = document.getElementById("uplaoddiv");
-const fileInput = document.getElementById("fileInput");
-let file;
-uploadDiv.addEventListener("click", () => {
-  fileInput.click();
-  file = "";
-});
-fileInput.addEventListener("change", () => {
-  file = fileInput.files[0];
 
-  if (file && file.type.startsWith("image/")) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const uploadedimg = reader.result;
-      localStorage.setItem("backgroundURL", uploadedimg);
-      backgroundURL = uploadedimg;
-      document.documentElement.style.setProperty(
-        "--backgroundURL",
-        `url(${backgroundURL})`
-      );
-    };
-    reader.readAsDataURL(file);
-  }
-});
-const glassToggle = document.getElementById("toggleGlassmorphism");
+const glassmorphismSlider = document.getElementById("glassmorphism-slider");
+glassmorphismSlider.addEventListener("input", updateGlassmorphismDarkness);
+function updateGlassmorphismDarkness() {
+  const opacityValue = glassmorphismSlider.value;
+  localStorage.setItem("glassDarknessStore", opacityValue);
+  const newGlassmorphismBG = `rgba(14, 13, 13, ${opacityValue})`;
+  document.documentElement.style.setProperty(
+    "--glassmorphismBG",
+    newGlassmorphismBG
+  );
+}
+function loadGlassmorphismState() {
+  const storedOpacity = localStorage.getItem("glassDarknessStore") || "0.432";
+  glassmorphismSlider.value = storedOpacity;
+  updateGlassmorphismDarkness();
+}
+window.addEventListener("load", loadGlassmorphismState);
 
-function glassToggleButton() {
-  console.log("Checkbox clicked");
-  localStorage.setItem("glassToggleStore", glassToggle.checked);
-  if (glassToggle.checked) {
-    document.documentElement.style.removeProperty("--glassmorphismBG");
-  } else {
-    document.documentElement.style.setProperty(
-      "--glassmorphismBG",
-      `rgba(0, 0, 0, 1)`
-    );
-  }
-}
-function loadGlassToggle() {
-  console.log("Loading auto status");
-  const storedValue = localStorage.getItem("glassToggleStore");
-  if (storedValue === null) {
-    glassToggle.checked = true;
-    localStorage.setItem("glassToggleStore", "true");
-  } else {
-    glassToggle.checked = storedValue === "true";
-  }
-  if (glassToggle.checked) {
-    document.documentElement.style.removeProperty("--glassmorphismBG");
-  } else {
-    document.documentElement.style.setProperty(
-      "--glassmorphismBG",
-      `rgba(0, 0, 0, 1)`
-    );
-  }
-}
-window.addEventListener("load", loadGlassToggle);
+
 
 function antiClose() {
   if (antiCloseButton.checked) {
@@ -244,7 +257,7 @@ function loadingHide() {
 }
 
 function copy(URLLink) {
-const message = URLLink;
+  const message = URLLink;
   navigator.clipboard
     .writeText(message)
     .then(() => {

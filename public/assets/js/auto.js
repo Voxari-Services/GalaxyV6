@@ -8,18 +8,6 @@ function updateFavicon(href) {
   }
   link.href = href;
 }
-
-function toggleGlass(enabled) {
-  if (enabled) {
-    document.documentElement.style.setProperty(
-      "--glassmorphismBG",
-      "rgba(0,0,0,1)"
-    );
-  } else {
-    document.documentElement.style.removeProperty("--glassmorphismBG");
-  }
-}
-
 function applyStoredValues() {
   const savedTitle = localStorage.getItem("pageTitle");
   if (savedTitle) document.title = savedTitle;
@@ -33,8 +21,6 @@ function applyStoredValues() {
       `url(${backgroundURL})`
     );
   }
-
-  toggleGlass(localStorage.getItem("glassToggleStore") === "false");
 }
 
 function loadAntiClose() {
@@ -55,6 +41,18 @@ function updateName() {
 
   document.querySelector(".userName").textContent = x;
 }
+
+
+
+function updateGlassmorphismDarkness() {
+let opacityValue = localStorage.getItem("glassDarknessStore");
+  const newGlassmorphismBG = `rgba(14, 13, 13, ${opacityValue})`;
+  document.documentElement.style.setProperty(
+    "--glassmorphismBG",
+    newGlassmorphismBG
+  );
+}
+
 window.addEventListener("storage", (event) => {
   switch (event.key) {
     case "pageTitle":
@@ -69,8 +67,8 @@ window.addEventListener("storage", (event) => {
         `url(${event.newValue})`
       );
       break;
-    case "glassToggleStore":
-      toggleGlass(event.newValue === "false");
+    case "glassDarknessStore":
+      updateGlassmorphismDarkness();
       break;
     case "checkAntiClose":
       loadAntiClose();
@@ -82,3 +80,4 @@ window.addEventListener("storage", (event) => {
 });
 
 document.addEventListener("DOMContentLoaded", applyStoredValues);
+document.addEventListener("DOMContentLoaded", updateGlassmorphismDarkness);

@@ -24,6 +24,15 @@ function pchangeShow(proxyType) {
     PchangeNotice.style.animation = "noticeHide 0.4s ease 1s forwards";
   });
 }
+function BookmarkShow(text) {
+  PchangeNotice.className = "notice";
+  PchangeNotice.textContent = text;
+  document.body.appendChild(PchangeNotice);
+  PchangeNotice.style.animation = "noticeShow 0.4s forwards";
+  PchangeNotice.addEventListener("animationend", function () {
+    PchangeNotice.style.animation = "noticeHide 0.4s ease 4s forwards";
+  });
+}
 function reloadX() {
   reload.addEventListener("click", () => {
     iframe = document.getElementById("frame" + activeTabId.replace("tab", ""));
@@ -128,6 +137,7 @@ function AddShortcut() {
   });
 
   bookmarks.appendChild(bookmark);
+  BookmarkShow("Bookmark made! Right click it to remove")
 }
 
 window.onload = () => {

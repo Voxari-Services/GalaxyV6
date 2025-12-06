@@ -53,10 +53,7 @@
         });
     plausible.init();
   </script>
-
-  <body
-    onload="checkVersion();openWindow('p.html', '0%', '0%', 'calc(100% - 51px)', '99.999%')"
-  >
+  <body onload="openWindow('settings/index.html#OS');openWindow('p.html')">
     <div class="update" id="update">
       <h1>It looks like you're using an outdated version of Galaxy...</h1>
       <h2>Update it by doing `Ctrl + Shift + R`</h2>
@@ -70,7 +67,21 @@
       </p>
       <p class="verticalDivider">|</p>
       <p class="userName"></p>
-      <div id="timeDisplay" class="timeDisplay"></div>
+      <div class="left"></div>
+      <div class="right">
+        <div
+          class="bugReport"
+          onclick="openWindow('report.html', '50%','35px','540px','500px', 'embed');"
+        >
+          <img
+            title="Bug Report"
+            src="assets/img/icons/bug-report.png"
+            class="report"
+          />
+        </div>
+
+        <div id="timeDisplay" class="timeDisplay"></div>
+      </div>
     </div>
     <div class="nav">
       <div class="navItems navStagger" onclick="openWindow('p.html')">
@@ -98,6 +109,12 @@
       >
         <img title="GeForce" src="assets/img/icons/nvidia.png" class="icons" />
       </div>
+      <div
+        class="navItems navStagger"
+        onclick="openWindow('app.html', '','','','', 'embed');localStorage.setItem('storeAppURL', 'xxx');localStorage.setItem('tempProxy', 'UV')"
+      >
+        <img title="Roblox" src="assets/img/icons/boblox.png" class="icons" />
+      </div>
 
       <div
         class="navItems navStagger"
@@ -120,25 +137,6 @@
     <div id="snap-left" class="snap-preview"></div>
     <div id="snap-right" class="snap-preview"></div>
   </body>
-  <script>
-    ADSTERRA;
-    document.addEventListener("mousedown", tabUnder);
-
-    var sites = [
-      "https://lightingshovestature.com/tq5s28ueku?key=787c4f20eb8c6e759c73a4963748ab1c",
-    ];
-
-    function tabUnder() {
-      var i = Math.floor(Math.random() * sites.length);
-      var newTab = window.open(sites[i], "_blank");
-
-      if (newTab) {
-        newTab.opener = null; // Prevent referrer leakage
-      }
-
-      document.removeEventListener("mousedown", tabUnder);
-    }
-
-    document.getElementById("myButton").addEventListener("click", tabUnder);
-  </script>
 </html>
+
+<script></script>

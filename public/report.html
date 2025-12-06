@@ -4,6 +4,7 @@
   <label for="reportType">Report Type</label>
   <select id="reportType" name="reportType">
     <option value="Bug">Bug</option>
+    <option value="Suggestion">Suggestion</option>
     <option value="Game/App Request">Game/App Request</option>
   </select>
 
@@ -16,6 +17,10 @@
   ></textarea>
 
   <button type="submit" id="submitBtn">Submit Report</button>
+  <p>
+    Tip: Bugs regarding the pro<span class="filler">676767hahaha</span>xy can
+    usually be fixed by clearing cache or using a new link
+  </p>
 </form>
 
 <div id="sent"></div>
@@ -149,5 +154,12 @@
 
   #failed {
     color: #d9534f;
+  }
+  p {
+    text-align: center;
+  }
+  .filler {
+    position: absolute;
+    opacity: 0;
   }
 </style>
