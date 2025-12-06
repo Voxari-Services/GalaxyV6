@@ -8,6 +8,13 @@ import path from "node:path";
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 import dotenv from "dotenv";
+import fastifyRateLimit from "@fastify/rate-limit";
+
+fastify.register(fastifyRateLimit, {
+  max: 50,             // 50 requests
+  timeWindow: "1 minute",
+  allowList: ["127.0.0.1"],  // allow local
+});
 
 dotenv.config();
 
@@ -44,7 +51,7 @@ fastify.addHook("onRequest", async (req, reply) => {
   );
 });
 fastify.addHook("onRequest", async (req, reply) => {
-  if (req.ip.startsWith("45.139.104.171"||"216.73.216.89"||"165.227.229.96"||"3.110.107.74"||"67.171.143.124"||"71.226.147.237"||"67.191.160.156"||"108.50.175.95"||"162.19.137.220"||"51.195.91.122"||"57.129.15.32"||"23.243.238.252"||"157.245.145.81")) {
+  if (req.ip.startsWith("45.139.104.171"||"216.73.216.89"||"165.227.229.96"||"3.110.107.74"||"67.171.143.124"||"71.226.147.237"||"67.191.160.156"||"108.50.175.95"||"162.19.137.220"||"51.195.91.122"||"57.129.15.32"||"23.243.238.252"||"157.245.145.81"||"68.231.158.34")) {
     reply.code(403).send({ error: "Forbidden" });
     return;
   }
