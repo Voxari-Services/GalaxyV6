@@ -37,13 +37,6 @@ const fastify = Fastify({
   logger: NODE_ENV === "development",
 });
 
-fastify.addHook("onRequest", async (req, reply) => {
-  const referer = req.headers['referer'] || 'N/A';
-  console.log(
-    `[${new Date().toISOString()}] Incoming request IP: ${req.ip}, Host: ${req.hostname}, URL: ${req.url}, Referer: ${referer}`
-  );
-});
-
 fastify.register(fastifyStatic, {
   root: publicDir,
   prefix: "/",
