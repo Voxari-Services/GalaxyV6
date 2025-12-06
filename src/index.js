@@ -43,19 +43,11 @@ fastify.addHook("onRequest", async (req, reply) => {
     time,
     method: req.method,
     ip: req.ip,
-    ips: req.ips, // if behind proxy
+    ips: req.ips, 
     hostname: req.hostname,
     url: req.url,
-    protocol: req.protocol,
-    referer: req.headers['referer'] || 'N/A',
-    origin: req.headers['origin'] || 'N/A',
-    userAgent: req.headers['user-agent'] || 'N/A',
-    cookies: req.cookies || {},
-    headers: req.headers,
   };
 
-  // If you want to see the request body, enable this:
-  // (Be careful—POST bodies can include passwords)
   if (req.body) {
     log.body = req.body;
   }
