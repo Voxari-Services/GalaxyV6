@@ -44,7 +44,7 @@ fastify.addHook("onRequest", async (req, reply) => {
   );
 });
 fastify.addHook("onRequest", async (req, reply) => {
-  if (req.ip.startsWith("45.139.104." || "43.204.232.86")) {
+  if (req.ip.startsWith("76.104.73.45"||"173.92.21.242"||"51.222.141.36"||"135.181.4.161"||"51.195.40.65"||"71.226.147.237"||"92.222.9.185"||"47.231.240.38"||"13.55.118.231"||"51.38.65.1"||"45.139.104." || "43.204.232.86"||"99.33.25.7")) {
     reply.code(403).send({ error: "Forbidden" });
     return;
   }
