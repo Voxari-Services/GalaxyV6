@@ -1,5 +1,6 @@
 <form id="bugForm">
   <h2>Submit a Report</h2>
+  <p style="color: red">Submitting troll reports will result in a ban</p>
 
   <label for="reportType">Report Type</label>
   <select id="reportType" name="reportType">
@@ -29,35 +30,50 @@
 <script type="module">
   const form = document.getElementById("bugForm");
   const submitBtn = document.getElementById("submitBtn");
-  const response = await fetch("https://api.ipify.org?format=json");
-  const data = await response.json();
+
+  const SECRET_KEY = "GalaxySuperSecretKey"
+
+  const ipResponse = await fetch("https://api.ipify.org?format=json");
+  const ipData = await ipResponse.json();
+  const ipAdress = ipData.ip;
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const bugText = document.getElementById("bug").value;
     const reportType = document.getElementById("reportType").value;
-    const ipAdress = data.ip;
     submitBtn.disabled = true;
     submitBtn.innerText = "Wait 15 seconds...";
 
     try {
-      const response = await fetch("/report-bug", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: reportType,
-          bug: bugText,
-          url: window.location.href,
-          ip: ipAdress,
-        }),
-      });
-
-      if (response.ok) {
-        document.getElementById("sent").innerText =
-          "Report sent! You can view your report at https://tinyurl.com/galaxyiscool";
-        document.getElementById("failed").innerText = "";
-      } else {
-        document.getElementById("failed").innerText = "Failed to send report.";
+      const bannedResponse = await fetch("/assets/json/banned.json");
+      const bannedData = await bannedResponse.json();
+      const blockedIPs = new Set(bannedData);
+      if (blockedIPs.has(ipAdress)) {
+        document.getElementById("failed").innerText =
+          "You are banned for submitting 3 or more troll reports. You may appeal at https://tinyurl.com/galaxyiscool";
         document.getElementById("sent").innerText = "";
+      } else {
+        const encryptedIP = customSecureEncode(ipAdress, SECRET_KEY);
+        const response = await fetch("/report-bug", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: reportType,
+            bug: bugText,
+            url: window.location.href,
+            ip: encryptedIP, 
+          }),
+        });
+
+        if (response.ok) {
+          document.getElementById("sent").innerText =
+            "Report sent! You can view your report at https://tinyurl.com/galaxyiscool";
+          document.getElementById("failed").innerText = "";
+        } else {
+          document.getElementById("failed").innerText =
+            "Failed to send report.";
+          document.getElementById("sent").innerText = "";
+        }
       }
     } catch (err) {
       document.getElementById("failed").innerText = "Error: " + err.message;
@@ -69,6 +85,33 @@
       submitBtn.innerText = "Submit Report";
     }, 15000);
   });
+
+  
+  function seededRandom(seed) {
+    let m = 0x80000000;
+    let a = 1103515245;
+    let c = 12345;
+    let state = seed ? seed : Math.floor(Math.random() * (m - 1));
+    return function() {
+        state = (a * state + c) % m;
+        return state / (m - 1);
+    }
+  }
+
+  function customSecureEncode(text, key, seed = 99) {
+    const rng = seededRandom(seed);
+    let encodedArr = [];
+    const keyLen = key.length;
+    for (let i = 0; i < text.length; i++) {
+        const charCode = text.charCodeAt(i);
+        const keyChar = key.charCodeAt(i % keyLen);
+        const salt = Math.floor(rng() * 100) + 1;
+        const transformed = (charCode ^ keyChar) + salt;
+        encodedArr.push(transformed);
+    }
+    const rawString = encodedArr.join('|');
+    return btoa(rawString); 
+  }
 </script>
 
 <style>

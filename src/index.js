@@ -56,7 +56,6 @@ fastify.addHook("onRequest", async (req, reply) => {
   console.log("Incoming Request →", JSON.stringify(log, null, 2));
 });
 
-// Load blocked.json (assume it’s an array of IPs)
 const blockedIPs = new Set(
   JSON.parse(fs.readFileSync("src/blocked.json", "utf-8"))
 );
